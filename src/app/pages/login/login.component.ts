@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 @Component({
@@ -46,7 +47,4 @@ export class LoginComponent {
         console.log(data);
       })
   }
-
-
-
 }

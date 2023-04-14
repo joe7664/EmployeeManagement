@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -8,8 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
-
-
+import { EmployeeComponent } from './pages/employee/employee.component';
+import { ManagerComponent } from './pages/manager/manager.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { LeaveRequestsComponent } from './components/leave-requests/leave-requests.component';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -25,6 +28,10 @@ const route: Routes = [
     AppComponent,
     LoginComponent,
     HomeComponent,
+    EmployeeComponent,
+    ManagerComponent,
+    AdminComponent,
+    LeaveRequestsComponent
   ],
   imports: [
     RouterModule.forRoot(route),
@@ -40,7 +47,6 @@ const route: Routes = [
     MatSlideToggleModule,
     MatDialogModule,
     MatCardModule,
-     
   ],
   providers: [],
   bootstrap: [AppComponent]
