@@ -32,9 +32,10 @@
               <td mat-cell *matCellDef="let element"> {{element.email}} </td>
             </ng-container>
 
+            <!-- Availability Column -->
             <ng-container matColumnDef="Availability">
                 <th mat-header-cell *matHeaderCellDef>  </th>
-                <td mat-cell *matCellDef="let element"><button mat-button (click)="openDialog()">Open dialog</button></td>
+                <td mat-cell *matCellDef="let element"><button mat-button (click)="openDialog()">Availability</button></td>
               </ng-container>
           
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
