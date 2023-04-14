@@ -17,6 +17,7 @@ export class LoginComponent {
   phone:string="";
   managerId:string="";
   regPassword:string="";
+  message:string="";
 
   constructor(private loginService:LoginService, private router:Router){}
   toggleType() {
@@ -42,9 +43,14 @@ export class LoginComponent {
       firstName:this.fName, 
       lastName:this.lName, 
       phoneNumber:this.phone, 
-      managerId:this.managerId as unknown as number
-      }).subscribe((data) => {
-        console.log(data);
+      managerId:this.managerId as unknown as number,
+      isManager:0,
+      }).subscribe(
+        (data) => {
+        this.message = "Employee created Succesfully"
+      }, (error) => {
+        console.log(error)
+        this.message= error.error
       })
   }
 }

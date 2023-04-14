@@ -4,8 +4,10 @@ export interface Employee {
     id?:number,
     lastName?:string,
     leaves?:string[],
-    manager?:boolean,
+    isManager?:number,
     managerId?:number,
     password?:string,
-    phoneNumber?:string
+    phoneNumber?:string,
+    leaveBalance?:number,
+    performanceReviews?:string[],
 }

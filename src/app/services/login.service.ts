@@ -17,10 +17,10 @@ export class LoginService {
     return this.http.post<Employee>("http://localhost:9000/revWorkforce/login", 
     employee, {headers:header})
   }
-  register(employee:Employee) : Observable<Employee> {
+  register(employee:Employee) : Observable<any> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post<Employee>("http://localhost:9000/revWorkforce/register", employee, {headers:header})
+    return this.http.post("http://localhost:9000/revWorkforce/register", employee,{responseType:"text"})
   }
 }
