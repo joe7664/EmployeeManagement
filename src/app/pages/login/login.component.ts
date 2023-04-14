@@ -15,6 +15,7 @@ export class LoginComponent {
   lName:string = "";
   phone:string="";
   managerId:string="";
+  regPassword:string="";
 
   constructor(private loginService:LoginService, private router:Router){}
   toggleType() {
@@ -36,7 +37,7 @@ export class LoginComponent {
   register() {
     this.loginService.register({
       email:this.email, 
-      password:this.password, 
+      password:this.regPassword, 
       firstName:this.fName, 
       lastName:this.lName, 
       phoneNumber:this.phone, 

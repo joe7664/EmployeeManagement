@@ -21,6 +21,6 @@ export class LoginService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post<Employee>("http://localhost:9000/revWorkForce/register", employee, {headers:header})
+    return this.http.post<Employee>("http://localhost:9000/revWorkforce/register", employee, {headers:header})
   }
 }

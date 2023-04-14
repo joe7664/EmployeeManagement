@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCardModule} from '@angular/material/card';
 
 
 
@@ -38,6 +39,7 @@ const route: Routes = [
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatDialogModule,
+    MatCardModule,
      
   ],
   providers: [],
