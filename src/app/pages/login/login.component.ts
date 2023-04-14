@@ -8,7 +8,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  type:string = "admin";
+  type:string = "employee";
   username:string="";
   password:string="";
   email:string="";
@@ -17,6 +17,7 @@ export class LoginComponent {
   phone:string="";
   managerId:string="";
   regPassword:string="";
+  message:string="";
 
   constructor(private loginService:LoginService, private router:Router){}
   toggleType() {
@@ -27,6 +28,7 @@ export class LoginComponent {
       this.loginService.login({"email":this.username, "password":this.password}).subscribe(data => {
         console.log(data)
         this.loginService.id = data.id as unknown as number;
+        localStorage.setItem("employeeID", data.id as unknown as string)
         this.router.navigate(['/home']);
       })
     } else if (this.type=="admin") {
@@ -42,9 +44,14 @@ export class LoginComponent {
       firstName:this.fName, 
       lastName:this.lName, 
       phoneNumber:this.phone, 
-      managerId:this.managerId as unknown as number
-      }).subscribe((data) => {
-        console.log(data);
+      managerId:this.managerId as unknown as number,
+      isManager:0,
+      }).subscribe(
+        (data) => {
+        this.message = "Employee created Succesfully"
+      }, (error) => {
+        console.log(error)
+        this.message= error.error
       })
   }
 }

@@ -1,0 +1,17 @@
+#navbar {
+    background-color: rgb(146, 101, 179);
+    min-height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#navbar>h1 {
+    padding-left: 15px;
+    margin-bottom: 0;
+}
+.loginButton, .logoutButton {
+    padding: 7px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
