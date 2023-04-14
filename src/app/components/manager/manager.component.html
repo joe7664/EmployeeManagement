@@ -1,7 +1,47 @@
 <h1>Manager Component</h1>
-<div id="employees">
+<mat-tab-group>
+    <mat-tab label="Edit Profile"> Content 1 </mat-tab>
+    <mat-tab label="Leave Details"> Content 2 </mat-tab>
+    <mat-tab label="Previous Leaves"> Content 3 </mat-tab>
+    <mat-tab label="Apply For Leave"> Content 3 </mat-tab>
+    <mat-tab label="Leave Requests"> Content 3 </mat-tab>
+    <mat-tab label="Employees"> Content 3 </mat-tab>
+  </mat-tab-group>
+<!-- <div id="employees">
     <mat-list *ngFor="let el of employees">
         <mat-list-item><p>{{el.id}} {{el.firstName}} {{el.lastName}} {{el.email}}</p></mat-list-item>
         <mat-divider></mat-divider>
     </mat-list>
-</div>
+</div> -->
+<table mat-table [dataSource]="employees" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> No. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="First Name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="Last Name">
+      <th mat-header-cell *matHeaderCellDef> Weight </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Email">
+      <th mat-header-cell *matHeaderCellDef> Symbol </th>
+      <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>

@@ -18,6 +18,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { ManagerComponent } from './pages/manager/manager.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
 
 import { LeaveRequestsComponent } from './components/leave-requests/leave-requests.component';
 import { ManagerComponent as mComponent } from './components/manager/manager.component';
@@ -60,6 +62,8 @@ const route: Routes = [
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatDialogModule,
+    MatTabsModule,
+    MatTableModule,
 
     MatListModule,
     MatCardModule,
