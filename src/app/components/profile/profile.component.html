@@ -13,6 +13,6 @@
         <input [(ngModel)]="employee.password" required class="inputBlock" name="password" type="password" placeholder="Password"/>
         <input [(ngModel)]="employee.password" required class="inputBlock" name="cPassword" type="password" placeholder="Confirm Password"/>
         <input [(ngModel)]="employee.phoneNumber" class="inputBlock" name="phone" type="tel" placeholder="Phone Number">
-        <button>Submit</button>
+        <button (click)="updateInfo()">Submit</button>
     </div>
 </div>
