@@ -8,7 +8,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  type:string = "admin";
+  type:string = "employee";
   username:string="";
   password:string="";
   email:string="";
@@ -28,6 +28,7 @@ export class LoginComponent {
       this.loginService.login({"email":this.username, "password":this.password}).subscribe(data => {
         console.log(data)
         this.loginService.id = data.id as unknown as number;
+        localStorage.setItem("employeeID", data.id as unknown as string)
         this.router.navigate(['/home']);
       })
     } else if (this.type=="admin") {

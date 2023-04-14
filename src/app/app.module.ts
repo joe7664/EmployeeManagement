@@ -13,11 +13,12 @@ import { EmployeeComponent } from './pages/employee/employee.component';
 import { ManagerComponent } from './pages/manager/manager.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { LeaveRequestsComponent } from './components/leave-requests/leave-requests.component';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './pages/home/home.component';
+import { ManagerComponent as mComponent } from './components/manager/manager.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 const route: Routes = [
   {path:"", component:AppComponent},
   {path:"login", component:LoginComponent},
@@ -31,7 +32,9 @@ const route: Routes = [
     EmployeeComponent,
     ManagerComponent,
     AdminComponent,
-    LeaveRequestsComponent
+    LeaveRequestsComponent,
+    mComponent,
+    NavbarComponent
   ],
   imports: [
     RouterModule.forRoot(route),
