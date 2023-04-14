@@ -1,1 +1,26 @@
-<p>login works!</p>
+<div id="login">
+  <h1 class="title">Login page</h1>
+  <div class="typeToggle">
+    <button (click)="toggleType()" [ngStyle]="{'backgroundColor':type=='admin' ? 'red' : ''}">Admin</button>
+    <button (click)="toggleType()" [ngStyle]="{'backgroundColor':type=='employee' ? 'red' :''}">Employee</button>
+  </div>
+  <form>
+    <input [(ngModel)]="username" class="inputBlock" name="username" type="text" placeholder="Username">
+    <input [(ngModel)]="password" class="inputBlock" name="password" type="password" placeholder="Password"/>
+    <button (click)="submit()" class="submitButton" type="submit">Login</button>
+  </form>
+</div>
+<div id="register" style="margin-top:20px">
+  <mat-card style="width:90%; margin: auto; padding: 10px 0;">
+    <h2 style="text-align: center; margin-bottom:0">Register New Employee</h2>
+  <form>
+    <input [(ngModel)]="email" required class="inputBlock" name="email" type="text" placeholder="email">
+    <input [(ngModel)]="regPassword" required class="inputBlock" name="password" type="password" placeholder="Password"/>
+    <input [(ngModel)]="fName" class="inputBlock" name="fname" type="text" placeholder="First Name">
+    <input [(ngModel)]="lName" class="inputBlock" name="lname" type="text" placeholder="Last name"/>
+    <input [(ngModel)]="phone" class="inputBlock" name="phone" type="tel" placeholder="Phone Number">
+    <input [(ngModel)]="managerId" class="inputBlock" name="manager ID" type="text" placeholder="Manager's ID">
+    <button (click)="register()" class="submitButton" type="submit">Register</button>
+  </form>
+</mat-card>
+</div>

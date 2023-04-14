@@ -1,0 +1,33 @@
+.inputBlock {
+    display: block;
+    height: 30px;
+    padding-left: 10px;
+    max-width: 300px;
+    width: 70%;
+    text-align: left;
+    margin: 15px auto;
+}
+.typeToggle {
+    text-align: center;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    max-width: 200px;
+    justify-content: space-between;
+
+}
+.title {
+    padding-top: 20px;
+    font-size: 2rem;
+    text-align: center;
+}
+.typeToggle>button {
+    width: 95px;
+    padding: 10px 15px;
+}
+.submitButton {
+    display: block;
+    width: 95px;
+    padding: 10px 15px;
+    margin: auto;
+}
