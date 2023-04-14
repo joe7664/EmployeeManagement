@@ -1,1 +1,18 @@
-<p>profile works!</p>
+<div class="outer">
+    <div class="in1">
+        <p>{{employee.email}}</p>
+        <p>{{employee.firstName}}</p>
+        <p>{{employee.lastName}}</p>
+        <p>{{employee.phoneNumber}}</p>
+        <button (click)="edit=!edit">Edit Profile Information</button>
+    </div>
+    <div *ngIf="edit" class="in2">
+        <input [(ngModel)]="employee.email" class="inputBlock" name="email" type="text" placeholder="email"/>
+        <input [(ngModel)]="employee.firstName" class="inputBlock" name="fname" type="text" placeholder="First Name"/>
+        <input [(ngModel)]="employee.lastName" class="inputBlock" name="lname" type="text" placeholder="Last Name"/>
+        <input [(ngModel)]="employee.password" required class="inputBlock" name="password" type="password" placeholder="Password"/>
+        <input [(ngModel)]="employee.password" required class="inputBlock" name="cPassword" type="password" placeholder="Confirm Password"/>
+        <input [(ngModel)]="employee.phoneNumber" class="inputBlock" name="phone" type="tel" placeholder="Phone Number">
+        <button>Submit</button>
+    </div>
+</div>

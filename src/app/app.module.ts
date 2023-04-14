@@ -43,6 +43,8 @@ const route: Routes = [
     ManagerComponent,
     AdminComponent,
     LeaveRequestsComponent,
+    LeaveApplyComponent,
+    ProfileComponent,
     mComponent,
     NavbarComponent
   ],

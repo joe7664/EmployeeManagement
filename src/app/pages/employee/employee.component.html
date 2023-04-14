@@ -1,4 +1,11 @@
-<a [routerLink]="['./profile']"><button>Edit Profile</button></a>
-<button>Leave Details</button>
-<a [routerLink]="['./requested']"><button>Previous Leaves</button></a>
-<a [routerLink]="['./apply']"><button>Apply for Leave</button></a>
+<a [routerLink]="['./profile']"><button (click)="Comp=1">Profile</button></a>
+<a [routerLink]="['./holiday-leaves']"><button (click)="Comp=2">Holiday Leaves</button></a>
+<a [routerLink]="['./requested']"><button (click)="Comp=3">Previous Leaves</button></a>
+<a [routerLink]="['./apply']"><button (click)="Comp=4">Apply for Leave</button></a>
+<div [ngSwitch]="Comp">
+    <app-profile *ngSwitchCase="1"></app-profile>
+    <!-- <app-holiday-leaves *ngSwitchCase="2"></app-holiday-leaves> -->
+    <app-leave-requests *ngSwitchCase="3"></app-leave-requests>
+    <app-leave-apply *ngSwitchCase="4"></app-leave-apply>
+    <p *ngSwtchDefault></p>
+</div>
