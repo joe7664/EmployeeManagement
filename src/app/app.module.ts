@@ -10,7 +10,8 @@ import {MatDialogModule, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatDividerModule} from '@angular/material/divider';
+import {MatList, MatListModule} from '@angular/material/list'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -59,7 +60,10 @@ const route: Routes = [
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatDialogModule,
+
+    MatListModule,
     MatCardModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
