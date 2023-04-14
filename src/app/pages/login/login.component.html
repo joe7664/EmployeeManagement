@@ -10,3 +10,14 @@
     <button (click)="submit()" class="submitButton" type="submit">Login</button>
   </form>
 </div>
+<div id="register">
+  <form>
+    <input [(ngModel)]="email" class="inputBlock" name="email" type="text" placeholder="email">
+    <input [(ngModel)]="password" class="inputBlock" name="password" type="password" placeholder="Password"/>
+    <input [(ngModel)]="fName" class="inputBlock" name="fname" type="text" placeholder="First Name">
+    <input [(ngModel)]="lName" class="inputBlock" name="lname" type="text" placeholder="Last name"/>
+    <input [(ngModel)]="phone" class="inputBlock" name="phone" type="tel" placeholder="Phone Number">
+    <input [(ngModel)]="managerId" class="inputBlock" name="manager ID" type="text" placeholder="Manager's ID">
+    <button (click)="register()" class="submitButton" type="submit">Login</button>
+  </form>
+</div>

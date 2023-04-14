@@ -5,7 +5,10 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { LoginService } from './services/login.service';
+import {MatDialogModule, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
+
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -26,13 +29,16 @@ const route: Routes = [
     RouterModule.forRoot(route),
     ReactiveFormsModule,
     HttpClientModule,
+    MatFormFieldModule,
     CommonModule,
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatSlideToggleModule ,
+    MatSlideToggleModule,
+    MatDialogModule,
+     
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,6 +10,12 @@ export class LoginComponent {
   type:string = "admin";
   username:string="";
   password:string="";
+  email:string="";
+  fName:string="";
+  lName:string = "";
+  phone:string="";
+  managerId:string="";
+
   constructor(private loginService:LoginService, private router:Router){}
   toggleType() {
     this.type = this.type=="admin" ? "employee" : "admin";
@@ -26,6 +32,18 @@ export class LoginComponent {
     } else {
       console.log("How did you get here???")
     }
+  }
+  register() {
+    this.loginService.register({
+      email:this.email, 
+      password:this.password, 
+      firstName:this.fName, 
+      lastName:this.lName, 
+      phoneNumber:this.phone, 
+      managerId:this.managerId as unknown as number
+      }).subscribe((data) => {
+        console.log(data);
+      })
   }
 
 
