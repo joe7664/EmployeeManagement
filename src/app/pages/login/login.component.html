@@ -1,1 +1,12 @@
-<p>login works!</p>
+<div id="login">
+  <h1 class="title">Login page</h1>
+  <div class="typeToggle">
+    <button (click)="toggleType()" [ngStyle]="{'backgroundColor':type=='admin' ? 'red' : ''}">Admin</button>
+    <button (click)="toggleType()" [ngStyle]="{'backgroundColor':type=='employee' ? 'red' :''}">Employee</button>
+  </div>
+  <form>
+    <input [(ngModel)]="username" class="inputBlock" name="username" type="text" placeholder="Username">
+    <input [(ngModel)]="password" class="inputBlock" name="password" type="password" placeholder="Password"/>
+    <button (click)="submit()" class="submitButton" type="submit">Login</button>
+  </form>
+</div>
