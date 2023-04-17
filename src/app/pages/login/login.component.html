@@ -9,6 +9,7 @@
     <input [(ngModel)]="username" class="inputBlock" name="username" type="text" placeholder="Username">
     <input [(ngModel)]="password" class="inputBlock" name="password" type="password" placeholder="Password"/>
     <button (click)="submit()" class="submitButton" type="submit">Login</button>
+    <p style="text-align:center; padding-top: 10px;">{{loginMessage}}</p>
   </form>
 </div>
 <div id="register" style="margin-top:20px">

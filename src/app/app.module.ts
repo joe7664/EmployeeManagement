@@ -10,13 +10,18 @@ import {MatDialogModule, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import {MatDividerModule} from '@angular/material/divider';
+import {MatList, MatListModule} from '@angular/material/list'
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { ManagerComponent } from './pages/manager/manager.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { MatTabsModule} from '@angular/material/tabs';
+import {MatTableModule} from '@angular/material/table';
+import { DialogContentExampleDialog } from './components/manager/manager.component';
+
 
 import { LeaveRequestsComponent } from './components/leave-requests/leave-requests.component';
 import { ManagerComponent as mComponent } from './components/manager/manager.component';
@@ -32,7 +37,8 @@ const route: Routes = [
       {path:"requested", component: LeaveRequestsComponent},
       {path:"apply", component: LeaveApplyComponent}
     ]
-  }
+  },
+  {path:"**", component:AppComponent}
 ]
 @NgModule({
   declarations: [
@@ -46,7 +52,8 @@ const route: Routes = [
     LeaveApplyComponent,
     ProfileComponent,
     mComponent,
-    NavbarComponent
+    NavbarComponent,
+    DialogContentExampleDialog
   ],
   imports: [
     RouterModule.forRoot(route),
@@ -61,7 +68,12 @@ const route: Routes = [
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatDialogModule,
+    MatTabsModule,
+    MatTableModule,
+
+    MatListModule,
     MatCardModule,
+    MatDividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
