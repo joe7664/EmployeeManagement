@@ -29,7 +29,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LeaveApplyComponent } from './components/leave-apply/leave-apply.component';
 import { ProfileComponent } from './components/profile/profile.component';
 const route: Routes = [
-  {path:"", component:AppComponent},
   {path:"login", component:LoginComponent},
   {path:"home", component:HomeComponent,
     children:[
@@ -38,7 +37,7 @@ const route: Routes = [
       {path:"apply", component: LeaveApplyComponent}
     ]
   },
-  {path:"**", component:AppComponent}
+  {path:"**", component:HomeComponent}
 ]
 @NgModule({
   declarations: [
