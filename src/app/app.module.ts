@@ -28,6 +28,7 @@ import { ManagerComponent as mComponent } from './components/manager/manager.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LeaveApplyComponent } from './components/leave-apply/leave-apply.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { DateFormatterPipe } from './pipe/date-formatter.pipe';
 const route: Routes = [
   {path:"login", component:LoginComponent},
   {path:"home", component:HomeComponent,
@@ -52,7 +53,8 @@ const route: Routes = [
     ProfileComponent,
     mComponent,
     NavbarComponent,
-    DialogContentExampleDialog
+    DialogContentExampleDialog,
+    DateFormatterPipe
   ],
   imports: [
     RouterModule.forRoot(route),

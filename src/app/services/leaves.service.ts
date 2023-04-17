@@ -25,4 +25,18 @@ export class LeaveService {
     return this.http.get<Leave[]>("http://localhost:9000/leaves/"+id,
         {headers:header})
   }
+  rejectLeave(id:number) : Observable<string> {
+    const header = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.delete("http://localhost:9000/leaves/"+id,
+    {responseType:"text"})
+  } 
+  acceptLeave(id:number) : Observable<string> {
+    const header = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.delete("http://localhost:9000/leaves/"+id,
+    {responseType:"text"})
+  } 
 }

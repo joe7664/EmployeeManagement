@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Employee } from 'src/app/models/Employee';
 import { Leave } from 'src/app/models/Leave';
+import { LeaveService } from 'src/app/services/leaves.service';
 import { ManagerServiceService } from 'src/app/services/manager-service.service';
 
 export interface DialogData {
@@ -16,10 +17,10 @@ export interface DialogData {
 export class ManagerComponent {
   employees:Employee[] = []
   leaves:Leave[] = []
-  leaveColumns = ['id', 'First Name', 'Last Name']
+  leaveColumns = ['id', 'name', 'startDate', 'endDate', 'status', 'notes', 'action']
 
   displayedColumns: string[] = ['id', 'First Name', 'Last Name', 'Email', 'Availability'];
-  constructor(private managerService:ManagerServiceService, public dialog: MatDialog){}
+  constructor(private managerService:ManagerServiceService, public dialog: MatDialog, private leaveService : LeaveService){}
   getEmployees(){
     this.managerService.getEmployees().subscribe(data => {
       this.employees = data
@@ -40,6 +41,16 @@ export class ManagerComponent {
   getRequests() {
     
 
+  }
+  rejectLeave(leaveId:number) {
+    console.log(leaveId)
+    this.leaveService.rejectLeave(leaveId).subscribe(json => {
+      let x = this.leaves
+      this.leaves = x.filter(el=> el.id !== leaveId)
+    })
+  }
+  acceptLeave(leaveId:number) {
+    
   }
   ngOnInit() {
     this.getEmployees();
