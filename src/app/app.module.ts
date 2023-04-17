@@ -28,6 +28,7 @@ import { ManagerComponent as mComponent } from './components/manager/manager.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LeaveApplyComponent } from './components/leave-apply/leave-apply.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { HolidayLeavesComponent } from './components/holiday-leaves/holiday-leaves.component';
 const route: Routes = [
   {path:"", component:AppComponent},
   {path:"login", component:LoginComponent},
@@ -35,6 +36,7 @@ const route: Routes = [
     children:[
       {path:"profile", component: ProfileComponent},
       {path:"requested", component: LeaveRequestsComponent},
+      {path:"holiday-leaves", component: HolidayLeavesComponent},
       {path:"apply", component: LeaveApplyComponent}
     ]
   },
@@ -53,7 +55,8 @@ const route: Routes = [
     ProfileComponent,
     mComponent,
     NavbarComponent,
-    DialogContentExampleDialog
+    DialogContentExampleDialog,
+    HolidayLeavesComponent
   ],
   imports: [
     RouterModule.forRoot(route),
