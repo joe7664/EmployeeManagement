@@ -18,6 +18,7 @@ export class LoginComponent {
   managerId:string="";
   regPassword:string="";
   message:string="";
+  loginMessage:string=""
 
   constructor(private loginService:LoginService, private router:Router){}
   toggleType() {
@@ -25,11 +26,15 @@ export class LoginComponent {
   }
   submit() {
     if (this.type=="employee") {
-      this.loginService.login({"email":this.username, "password":this.password}).subscribe(data => {
+      this.loginService.login({"email":this.username, "password":this.password})
+      .subscribe(
+        data => {
         console.log(data)
         this.loginService.id = data.id as unknown as number;
         localStorage.setItem("employeeID", data.id as unknown as string)
         this.router.navigate(['/home']);
+      }, error => {
+        this.loginMessage = error.error
       })
     } else if (this.type=="admin") {
       console.log("We have not implemented an Admin Login feature yet")
