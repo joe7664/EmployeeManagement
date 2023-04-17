@@ -1,1 +1,10 @@
 <p>leave-requests works!</p>
+<ol>
+    <li *ngFor="let leave of leaves; index as i;">
+        <p>{{leave.startDate}}</p>
+        <p>{{leave.endDate}}</p>
+        <p>{{leave.leaveType}}</p>
+        <p>{{leave.status}}</p>
+        <p>{{leave.notes}}</p>
+    </li>
+</ol>

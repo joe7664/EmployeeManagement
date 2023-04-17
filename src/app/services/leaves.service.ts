@@ -11,18 +11,18 @@ export class LeaveService {
   id:number = 0
 
   constructor(private http:HttpClient) { }
-  leaveRequest(leave:Leave) : Observable<Leave> {
+  leaveRequest(leave:Leave, id:number) : Observable<Leave> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post<Leave>("http://localhost:9000/leaves/request/"+leave, 
+    return this.http.post<Leave>("http://localhost:9000/leaves/request/"+id, 
         leave, {headers:header})
   }
-  viewLeaves(leave:Leave) : Observable<Leave> {
+  viewLeaves(id:number) : Observable<Leave[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post<Leave>("http://localhost:9000/leaves/retrievePrevious",
-        leave, {headers:header})
+    return this.http.get<Leave[]>("http://localhost:9000/leaves/"+id,
+        {headers:header})
   }
 }
