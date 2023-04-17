@@ -21,6 +21,6 @@ export class ManagerServiceService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Leave[]>("http://localhost:9000/revWorkforce/employee/manager/" + this.loginService.id , {headers:header})
+    return this.http.get<Leave[]>("http://localhost:9000/leaves/manager/" + this.loginService.id , {headers:header})
   }
 }

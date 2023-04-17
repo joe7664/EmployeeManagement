@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Employee } from 'src/app/models/Employee';
+import { Leave } from 'src/app/models/Leave';
 import { ManagerServiceService } from 'src/app/services/manager-service.service';
 
 export interface DialogData {
@@ -14,6 +15,8 @@ export interface DialogData {
 })
 export class ManagerComponent {
   employees:Employee[] = []
+  leaves:Leave[] = []
+  leaveColumns = ['id', 'First Name', 'Last Name']
 
   displayedColumns: string[] = ['id', 'First Name', 'Last Name', 'Email', 'Availability'];
   constructor(private managerService:ManagerServiceService, public dialog: MatDialog){}
@@ -34,8 +37,16 @@ export class ManagerComponent {
       console.log(`Dialog result: ${result}`);
     });
   }
+  getRequests() {
+    
+
+  }
   ngOnInit() {
     this.getEmployees();
+    this.managerService.getLeaveRequests().subscribe(json => {
+      this.leaves = json;
+      console.log("LEAVES", json)
+    })
   }
   
 
