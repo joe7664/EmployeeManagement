@@ -6,7 +6,7 @@ import { LeaveService } from 'src/app/services/leaves.service';
 import { ManagerServiceService } from 'src/app/services/manager-service.service';
 
 export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
+  leaves: Leave[];
 }
 
 @Component({
@@ -19,6 +19,8 @@ export class ManagerComponent {
   leaves:Leave[] = []
   endDate:Date = new Date()
   startDate:Date = new Date()
+  searchName:string = ""
+  fullLeaves:Leave[] = []
   leaveColumns = ['name', 'startDate', 'endDate', 'status', 'notes','feedback', 'action']
 
   displayedColumns: string[] = ['First Name', 'Last Name', 'Email', 'Availability'];
@@ -29,22 +31,31 @@ export class ManagerComponent {
       console.log("EMPLOYEES", data)
     })
   }
+  searchChange(name:string) {
+    console.log(name)
+    let x:Leave[] = []
+    x = this.fullLeaves.filter(el => {
+      return el.firstname?.toLowerCase()?.startsWith(name.toLowerCase()) || el.lastname?.toLowerCase()?.startsWith(name.toLowerCase())
+    })
+    this.leaves = x
+  }
   getAvailability(employeeID:number) {
     this.managerService.getEmployeeLeave(employeeID).subscribe(data=> {
       console.log("DATA", data)
+      this.openDialog(data)
     })
   }
   findAvailable() {
-    console.log("NANI")
     this.managerService.findAvailableEmployees({"startDate":this.startDate,"endDate":this.endDate, "status":"Submitted"}).subscribe(data => {
       console.log("AVAILABLE", data)
       this.employees = data;
     })
   }
-  openDialog() {
+
+  openDialog(leaves:Leave[]) {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
       data: {
-        animal: 'panda',
+        leaves,
       },
     });
 
@@ -92,6 +103,7 @@ export class ManagerComponent {
         }
       }
       this.leaves = temp
+      this.fullLeaves = temp;
       console.log(this.leaves)
     })
   }
@@ -104,5 +116,11 @@ export class ManagerComponent {
   templateUrl: 'manager.component.availability.html',
 })
 export class DialogContentExampleDialog {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  leaves:Leave[] = []
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    this.leaves = this.data.leaves;
+  }
+  ngOnInit() {
+    console.log(this.leaves)
+  }
 }
