@@ -27,6 +27,12 @@ export class ManagerComponent {
       console.log("EMPLOYEES", data)
     })
   }
+  getAvailability(employeeID:number) {
+    this.managerService.getEmployeeLeave(employeeID).subscribe(data=> {
+      console.log("DATA", data)
+    })
+
+  }
   openDialog() {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
       data: {
