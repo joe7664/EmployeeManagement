@@ -6,6 +6,12 @@
     <mat-tab label="Previous Leaves"> Content 3 </mat-tab>
     <mat-tab label="Apply For Leave"> Content 3 </mat-tab>
     <mat-tab label="Leave Requests">
+        <div class="example-form" style="text-align: center;">
+            <mat-form-field class="example-full-width" style="max-width:400px; width: 80%;margin-top:20px">
+              <mat-label >Employee Name</mat-label>
+              <input matInput [(ngModel)]="searchName" (ngModelChange)="searchChange($event)" placeholder="Name" value="">
+            </mat-form-field>
+        </div>
         <table mat-table [dataSource]="leaves" class="mat-elevation-z8">
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef>Name </th>
@@ -34,8 +40,9 @@
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef>Action</th>
                 <td mat-cell *matCellDef="let element">
-                    <button (click)="rejectLeave(element.id)">Trash</button> 
-                    <button (click)="acceptLeave(element.id)">Check</button> 
+                    <button *ngIf="element.status=='Submittted'" (click)="rejectLeave(element.id)">Trash</button> 
+                    <button *ngIf="element.status=='Submittted'" (click)="acceptLeave(element.id)">Check</button> 
+                    <span *ngIf="element.status!=='Submittted'">Completed</span>
                 </td>
             </ng-container>
             
@@ -53,7 +60,7 @@
               <input [(ngModel)]="startDate" matStartDate placeholder="Start date">
               <input [(ngModel)]="endDate" matEndDate placeholder="End date">
             </mat-date-range-input>
-            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-hint>MM/DD/YYYY - MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-date-range-picker #picker></mat-date-range-picker>
           </mat-form-field>
