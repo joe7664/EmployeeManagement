@@ -7,4 +7,5 @@ export interface Leave {
     firstname?:string,
     lastname?:string,
     id?:number,
+    feedback?:string,
 }

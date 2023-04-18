@@ -29,7 +29,7 @@ export class LeaveService {
     const header = new HttpHeaders();
     header.append("accept", "text/plain");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post("http://localhost:9000/leaves/cancel/"+id,{notes:"asd"},
+    return this.http.post("http://localhost:9000/leaves/cancel/"+id,"This is a message",
     {headers:header, responseType:'text'})
   } 
   acceptLeave(id:number) : Observable<string> {
