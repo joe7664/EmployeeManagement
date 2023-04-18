@@ -1,0 +1,17 @@
+<h1 mat-dialog-title style="font-size:1.5rem">Accept/Cancel Leave Request</h1>
+<div mat-dialog-content>
+        <h2 style="font-size: 1rem;">Note: {{element.notes}}</h2>
+        <mat-form-field appearance="fill" style="width:100%">
+            <mat-label>Feedback</mat-label>
+            <textarea matInput
+
+                      cdkTextareaAutosize
+                      #autosize="cdkTextareaAutosize"
+                      cdkAutosizeMinRows="1"
+                      cdkAutosizeMaxRows="6"></textarea>
+          </mat-form-field>
+      <div style="display:flex; justify-content:space-around">
+        <button mat-raised-button (click)="rejectLeave()">Cancel</button> 
+        <button mat-raised-button (click)="acceptLeave()">Accept</button> 
+      </div>
+</div>

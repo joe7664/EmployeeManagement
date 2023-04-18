@@ -7,6 +7,7 @@ import { ManagerServiceService } from 'src/app/services/manager-service.service'
 
 export interface DialogData {
   leaves: Leave[];
+  element:Leave;
 }
 
 @Component({
@@ -50,6 +51,18 @@ export class ManagerComponent {
       console.log("AVAILABLE", data)
       this.employees = data;
     })
+  }
+  openLeaveAction(element:Leave) {
+    const dialogRef = this.dialog.open(LeaveAction, {
+      data: {
+        element,
+        leaves:this.leaves
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   openDialog(leaves:Leave[]) {
@@ -122,5 +135,46 @@ export class DialogContentExampleDialog {
   }
   ngOnInit() {
     console.log(this.leaves)
+  }
+}
+@Component({
+  selector: 'leave-action',
+  templateUrl: 'leave.component.html',
+})
+export class LeaveAction {
+  element:Leave = {}
+  leaves:Leave[]=[]
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, private leaveService:LeaveService) {
+    this.element = this.data.element;
+    this.leaves = this.data.leaves;
+  }
+  ngOnInit() {
+    console.log(this.element)
+  }
+  rejectLeave() {
+    let leaveId = this.element.id;
+    if (leaveId !== undefined)
+      this.leaveService.rejectLeave(leaveId).subscribe(json => {
+        let x = this.leaves
+        this.leaves = x.map(el=> {
+          if (el.id == leaveId) {
+            el.status = "Rejected"
+          }
+          return el
+        })
+      })
+  }
+  acceptLeave() {
+    let leaveId = this.element.id;
+    if (leaveId !== undefined)
+      this.leaveService.acceptLeave(leaveId).subscribe(json=> {
+        let x = this.leaves;
+        this.leaves = x.map(el=> {
+          if (el.id == leaveId) {
+            el.status = "Approved"
+          }
+          return el
+        })
+      })
   }
 }
