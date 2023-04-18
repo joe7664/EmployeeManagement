@@ -28,6 +28,12 @@ export class ManagerServiceService {
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
     return this.http.get<Leave[]>("http://localhost:9000/leaves/"+employeeID, {headers:header})
-
+  }
+  findAvailableEmployees(leave:Leave) : Observable<Employee[]>{
+    const header = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.post<Employee[]>("http://localhost:9000/leaves/employee-availability/manager/" + this.loginService.id,
+    leave, {headers:header})
   }
 }

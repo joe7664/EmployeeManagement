@@ -17,6 +17,8 @@ export interface DialogData {
 export class ManagerComponent {
   employees:Employee[] = []
   leaves:Leave[] = []
+  endDate:Date = new Date()
+  startDate:Date = new Date()
   leaveColumns = ['name', 'startDate', 'endDate', 'status', 'notes','feedback', 'action']
 
   displayedColumns: string[] = ['First Name', 'Last Name', 'Email', 'Availability'];
@@ -31,7 +33,13 @@ export class ManagerComponent {
     this.managerService.getEmployeeLeave(employeeID).subscribe(data=> {
       console.log("DATA", data)
     })
-
+  }
+  findAvailable() {
+    console.log("NANI")
+    this.managerService.findAvailableEmployees({"startDate":this.startDate,"endDate":this.endDate, "status":"Submitted"}).subscribe(data => {
+      console.log("AVAILABLE", data)
+      this.employees = data;
+    })
   }
   openDialog() {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
