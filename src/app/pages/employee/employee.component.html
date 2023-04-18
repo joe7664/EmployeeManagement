@@ -4,7 +4,7 @@
 <a [routerLink]="['./apply']"><button (click)="Comp=4">Apply for Leave</button></a>
 <div [ngSwitch]="Comp">
     <app-profile *ngSwitchCase="1"></app-profile>
-    <!-- <app-holiday-leaves *ngSwitchCase="2"></app-holiday-leaves> -->
+    <app-holiday-leaves *ngSwitchCase="2"></app-holiday-leaves>
     <app-leave-requests *ngSwitchCase="3"></app-leave-requests>
     <app-leave-apply *ngSwitchCase="4"></app-leave-apply>
     <p *ngSwtchDefault></p>

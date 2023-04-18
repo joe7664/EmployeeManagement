@@ -1,1 +1,13 @@
 <p>leave-apply works!</p>
+<input [(ngModel)]="leave.startDate" type="date" [min]='tomorrow'>
+<input [(ngModel)]="leave.endDate" type="date" [min]='leave.startDate'>
+<label for="types">Type of leave:</label>
+  <select [(ngModel)]="leave.leaveType" name="types" id="leave">
+    <option value="Vacation">Vacation</option>
+    <option value="Holiday">Holiday</option>
+    <option value="Medical">Medical</option>
+    <option value="Parental">Parental</option>
+    <option value="Personal">Personal</option>
+  </select>
+
+<button (click)="submit()">Submit Request</button>
