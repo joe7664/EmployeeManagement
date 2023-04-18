@@ -7,10 +7,6 @@
     <mat-tab label="Apply For Leave"> Content 3 </mat-tab>
     <mat-tab label="Leave Requests">
         <table mat-table [dataSource]="leaves" class="mat-elevation-z8">
-            <!-- <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef> ID </th>
-                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-            </ng-container> -->
             <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef>Name </th>
                 <td mat-cell *matCellDef="let element"> {{element.firstname}} {{element.lastname}} </td>
@@ -30,6 +26,10 @@
             <ng-container matColumnDef="notes">
                 <th mat-header-cell *matHeaderCellDef> Notes</th>
                 <td mat-cell *matCellDef="let element"> {{element.notes}} </td>
+            </ng-container>
+            <ng-container matColumnDef="feedback">
+                <th mat-header-cell *matHeaderCellDef> Feedback</th>
+                <td mat-cell *matCellDef="let element"> {{element.feedback}} </td>
             </ng-container>
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef>Action</th>

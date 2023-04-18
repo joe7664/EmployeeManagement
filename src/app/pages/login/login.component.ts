@@ -32,6 +32,7 @@ export class LoginComponent {
         console.log(data)
         this.loginService.id = data.id as unknown as number;
         localStorage.setItem("employeeID", data.id as unknown as string)
+        localStorage.setItem("isManager", data.isManager==1 ? "true" : "false")
         this.router.navigate(['/home']);
       }, error => {
         this.loginMessage = error.error

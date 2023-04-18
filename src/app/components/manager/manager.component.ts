@@ -17,7 +17,7 @@ export interface DialogData {
 export class ManagerComponent {
   employees:Employee[] = []
   leaves:Leave[] = []
-  leaveColumns = ['name', 'startDate', 'endDate', 'status', 'notes', 'action']
+  leaveColumns = ['name', 'startDate', 'endDate', 'status', 'notes','feedback', 'action']
 
   displayedColumns: string[] = ['First Name', 'Last Name', 'Email', 'Availability'];
   constructor(private managerService:ManagerServiceService, public dialog: MatDialog, private leaveService : LeaveService){}
@@ -78,6 +78,7 @@ export class ManagerComponent {
         }
       }
       this.leaves = temp
+      console.log(this.leaves)
     })
   }
   
