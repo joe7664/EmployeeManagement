@@ -12,6 +12,7 @@ import { LoginService } from 'src/app/services/login.service';
 export class HolidayLeavesComponent {
   holidays: Holiday[]=[];
 
+  displayedColumns: string[] = ['ID', 'Dates', 'Days', 'Name', 'Type'];
   constructor(private leaveService:LeaveService){}
 
   ngOnInit():void{

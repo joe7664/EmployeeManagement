@@ -12,6 +12,7 @@ export class LeaveRequestsComponent {
 
   leaves: Leave[]=[];
 
+  displayedColumns: string[] = ['Start Date', 'End Date', 'Type', 'Status', 'Notes'];
   constructor(private leaveService:LeaveService, private loginService:LoginService){}
 
   ngOnInit():void{

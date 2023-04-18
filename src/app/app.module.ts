@@ -31,7 +31,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { LeaveApplyComponent } from './components/leave-apply/leave-apply.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { DateFormatterPipe } from './pipe/date-formatter.pipe';
-import { HolidayLeavesComponent } from './components/holiday-leaves/holiday-leaves.component';
+import { HolidayLeavesComponent } from './holiday-leaves/holiday-leaves.component';
 import { MatNativeDateModule } from '@angular/material/core';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
@@ -78,8 +78,8 @@ const route: Routes = [
     MatDialogModule,
     MatTabsModule,
     MatTableModule,
-MatDatepickerModule,
-MatButtonModule,
+  MatDatepickerModule,
+  MatButtonModule,
     MatListModule,
     MatCardModule,
     MatDividerModule,

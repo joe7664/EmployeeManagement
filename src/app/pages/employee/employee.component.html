@@ -1,11 +1,6 @@
-<a [routerLink]="['./profile']"><button (click)="Comp=1">Profile</button></a>
-<a [routerLink]="['./holiday-leaves']"><button (click)="Comp=2">Holiday Leaves</button></a>
-<a [routerLink]="['./requested']"><button (click)="Comp=3">Previous Leaves</button></a>
-<a [routerLink]="['./apply']"><button (click)="Comp=4">Apply for Leave</button></a>
-<div [ngSwitch]="Comp">
-    <app-profile *ngSwitchCase="1"></app-profile>
-    <app-holiday-leaves *ngSwitchCase="2"></app-holiday-leaves>
-    <app-leave-requests *ngSwitchCase="3"></app-leave-requests>
-    <app-leave-apply *ngSwitchCase="4"></app-leave-apply>
-    <p *ngSwtchDefault></p>
-</div>
+<mat-tab-group>
+    <mat-tab label="Edit Profile"> <app-profile></app-profile> </mat-tab>
+    <mat-tab label="Holiday Leaves"> <app-holiday-leaves></app-holiday-leaves> </mat-tab>
+    <mat-tab label="Previous Leaves"> <app-leave-requests></app-leave-requests> </mat-tab>
+    <mat-tab label="Apply For Leave"> <app-leave-apply></app-leave-apply> </mat-tab>
+</mat-tab-group>
