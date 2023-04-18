@@ -27,16 +27,16 @@ export class LeaveService {
   }
   rejectLeave(id:number) : Observable<string> {
     const header = new HttpHeaders();
-    header.append("accept", "text/json");
+    header.append("accept", "text/plain");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.delete("http://localhost:9000/leaves/"+id,
-    {responseType:"text"})
+    return this.http.post("http://localhost:9000/leaves/cancel/"+id,{notes:"asd"},
+    {headers:header, responseType:'text'})
   } 
   acceptLeave(id:number) : Observable<string> {
     const header = new HttpHeaders();
-    header.append("accept", "text/json");
+    header.append("accept", "text/plain");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.delete("http://localhost:9000/leaves/"+id,
-    {responseType:"text"})
+    return this.http.post("http://localhost:9000/leaves/approve/"+id,{notes:"asd"},
+    {headers:header, responseType:"text"})
   } 
 }

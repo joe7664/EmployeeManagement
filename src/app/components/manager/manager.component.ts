@@ -17,9 +17,9 @@ export interface DialogData {
 export class ManagerComponent {
   employees:Employee[] = []
   leaves:Leave[] = []
-  leaveColumns = ['id', 'name', 'startDate', 'endDate', 'status', 'notes', 'action']
+  leaveColumns = ['name', 'startDate', 'endDate', 'status', 'notes', 'action']
 
-  displayedColumns: string[] = ['id', 'First Name', 'Last Name', 'Email', 'Availability'];
+  displayedColumns: string[] = ['First Name', 'Last Name', 'Email', 'Availability'];
   constructor(private managerService:ManagerServiceService, public dialog: MatDialog, private leaveService : LeaveService){}
   getEmployees(){
     this.managerService.getEmployees().subscribe(data => {
@@ -46,17 +46,38 @@ export class ManagerComponent {
     console.log(leaveId)
     this.leaveService.rejectLeave(leaveId).subscribe(json => {
       let x = this.leaves
-      this.leaves = x.filter(el=> el.id !== leaveId)
+      this.leaves = x.map(el=> {
+        if (el.id == leaveId) {
+          el.status = "Rejected"
+        }
+        return el
+      })
     })
   }
   acceptLeave(leaveId:number) {
-    
+    this.leaveService.acceptLeave(leaveId).subscribe(json=> {
+      let x = this.leaves;
+      this.leaves = x.map(el=> {
+        if (el.id == leaveId) {
+          el.status = "Approved"
+        }
+        return el
+      })
+    })
   }
   ngOnInit() {
     this.getEmployees();
     this.managerService.getLeaveRequests().subscribe(json => {
-      this.leaves = json;
-      console.log("LEAVES", json)
+      let temp : Leave[]= []
+      json.map((el) => {
+        if (el.status == "Submitted") temp.push(el);
+      })
+      for (let el of json) {
+        if (el.status !== "Submitted") {
+           temp.push(el);
+        }
+      }
+      this.leaves = temp
     })
   }
   
