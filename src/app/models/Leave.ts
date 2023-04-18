@@ -4,4 +4,7 @@ export interface Leave {
     leaveType?:string,
     status?:string,
     notes?:string,
+    firstname?:string,
+    lastname?:string,
+    id?:number,
 }
