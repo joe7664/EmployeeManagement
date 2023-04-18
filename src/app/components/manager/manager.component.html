@@ -45,6 +45,26 @@
             </table>
         </mat-tab>
     <mat-tab label="Employees">
+        <div style="display: flex;flex:6; justify-content: space-around;margin:20px 0; align-items: center;">
+            <div style="flex:4; text-align: center;">
+            <mat-form-field appearance="outline" >
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input [(ngModel)]="startDate" matStartDate placeholder="Start date">
+              <input [(ngModel)]="endDate" matEndDate placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </div>
+        <div style="flex:2; justify-content: space-around; display: flex;">
+          <button mat-raised-button (click)="findAvailable()" >Find</button>
+          <button mat-raised-button (click)="getEmployees()">Reset</button>
+        </div>
+          
+        </div>
+        
         <table mat-table [dataSource]="employees" class="mat-elevation-z8">
             <!-- ID Column -->
             <!-- <ng-container matColumnDef="id">
@@ -73,7 +93,7 @@
             <!-- Availability Column -->
             <ng-container matColumnDef="Availability">
                 <th mat-header-cell *matHeaderCellDef>  </th>
-                <td mat-cell *matCellDef="let element"><button mat-button (click)="openDialog()">Availability</button></td>
+                <td mat-cell *matCellDef="let element"><button mat-button (click)="getAvailability(element.id)">Availability</button></td>
               </ng-container>
           
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

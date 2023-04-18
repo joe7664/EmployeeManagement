@@ -1,13 +1,14 @@
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { MatInputModule } from '@angular/material/input';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatFormFieldControl, MatFormFieldModule} from '@angular/material/form-field';
 import {MatCardModule} from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDividerModule} from '@angular/material/divider';
@@ -21,7 +22,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 import { DialogContentExampleDialog } from './components/manager/manager.component';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatButtonModule} from '@angular/material/button';
 
 import { LeaveRequestsComponent } from './components/leave-requests/leave-requests.component';
 import { ManagerComponent as mComponent } from './components/manager/manager.component';
@@ -30,6 +32,7 @@ import { LeaveApplyComponent } from './components/leave-apply/leave-apply.compon
 import { ProfileComponent } from './components/profile/profile.component';
 import { DateFormatterPipe } from './pipe/date-formatter.pipe';
 import { HolidayLeavesComponent } from './components/holiday-leaves/holiday-leaves.component';
+import { MatNativeDateModule } from '@angular/material/core';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
@@ -75,12 +78,16 @@ const route: Routes = [
     MatDialogModule,
     MatTabsModule,
     MatTableModule,
-
+MatDatepickerModule,
+MatButtonModule,
     MatListModule,
     MatCardModule,
     MatDividerModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
-  providers: [],
+  providers: [MatDatepickerModule,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
