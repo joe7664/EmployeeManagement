@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Employee } from 'src/app/models/Employee';
+import { Leave } from 'src/app/models/Leave';
+import { LeaveService } from 'src/app/services/leaves.service';
 import { ManagerServiceService } from 'src/app/services/manager-service.service';
 
 export interface DialogData {
@@ -14,9 +16,11 @@ export interface DialogData {
 })
 export class ManagerComponent {
   employees:Employee[] = []
+  leaves:Leave[] = []
+  leaveColumns = ['name', 'startDate', 'endDate', 'status', 'notes','feedback', 'action']
 
-  displayedColumns: string[] = ['id', 'First Name', 'Last Name', 'Email', 'Availability'];
-  constructor(private managerService:ManagerServiceService, public dialog: MatDialog){}
+  displayedColumns: string[] = ['First Name', 'Last Name', 'Email', 'Availability'];
+  constructor(private managerService:ManagerServiceService, public dialog: MatDialog, private leaveService : LeaveService){}
   getEmployees(){
     this.managerService.getEmployees().subscribe(data => {
       this.employees = data
@@ -34,8 +38,48 @@ export class ManagerComponent {
       console.log(`Dialog result: ${result}`);
     });
   }
+  getRequests() {
+    
+
+  }
+  rejectLeave(leaveId:number) {
+    console.log(leaveId)
+    this.leaveService.rejectLeave(leaveId).subscribe(json => {
+      let x = this.leaves
+      this.leaves = x.map(el=> {
+        if (el.id == leaveId) {
+          el.status = "Rejected"
+        }
+        return el
+      })
+    })
+  }
+  acceptLeave(leaveId:number) {
+    this.leaveService.acceptLeave(leaveId).subscribe(json=> {
+      let x = this.leaves;
+      this.leaves = x.map(el=> {
+        if (el.id == leaveId) {
+          el.status = "Approved"
+        }
+        return el
+      })
+    })
+  }
   ngOnInit() {
     this.getEmployees();
+    this.managerService.getLeaveRequests().subscribe(json => {
+      let temp : Leave[]= []
+      json.map((el) => {
+        if (el.status == "Submitted") temp.push(el);
+      })
+      for (let el of json) {
+        if (el.status !== "Submitted") {
+           temp.push(el);
+        }
+      }
+      this.leaves = temp
+      console.log(this.leaves)
+    })
   }
   
 

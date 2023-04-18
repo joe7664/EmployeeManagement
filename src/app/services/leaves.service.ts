@@ -25,6 +25,20 @@ export class LeaveService {
     return this.http.get<Leave[]>("http://localhost:9000/leaves/"+id,
         {headers:header})
   }
+  rejectLeave(id:number) : Observable<string> {
+    const header = new HttpHeaders();
+    header.append("accept", "text/plain");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.post("http://localhost:9000/leaves/cancel/"+id,"This is a message",
+    {headers:header, responseType:'text'})
+  } 
+  acceptLeave(id:number) : Observable<string> {
+    const header = new HttpHeaders();
+    header.append("accept", "text/plain");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.post("http://localhost:9000/leaves/approve/"+id,{notes:"asd"},
+    {headers:header, responseType:"text"})
+  } 
   holidayLeaves() : Observable<Leave[]>{
     const header = new HttpHeaders();
     header.append("accept", "text/json");

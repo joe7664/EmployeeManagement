@@ -8,11 +8,15 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+  isManager : boolean = false;
   constructor(private loginService:LoginService, private route:Router){
     // This will eventually have to be replaced with JWT
     if (this.loginService.id == 0) {
       this.route.navigate(['/login'])
-    }}
+    }
+    if (localStorage.getItem("isManager") == "true") this.isManager = true;
+  }
+
   showID() {
     console.log(this.loginService.id)
   }
