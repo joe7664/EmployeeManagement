@@ -25,11 +25,11 @@ export class LeaveService {
     header.append("Access-Control-Allow-Origin", "*")
     return this.http.get<Leave[]>("http://localhost:9000/leaves/"+id, {headers:header})
   }
-  rejectLeave(id:number) : Observable<string> {
+  rejectLeave(id:number, feedback:string) : Observable<string> {
     const header = new HttpHeaders();
     header.append("accept", "text/plain");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post("http://localhost:9000/leaves/cancel/"+id,"This is a message",
+    return this.http.post("http://localhost:9000/leaves/cancel/"+id,feedback,
     {headers:header, responseType:'text'})
   } 
   acceptLeave(id:number) : Observable<string> {

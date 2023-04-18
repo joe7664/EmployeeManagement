@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Employee } from 'src/app/models/Employee';
 import { Leave } from 'src/app/models/Leave';
 import { LeaveService } from 'src/app/services/leaves.service';
@@ -80,29 +80,29 @@ export class ManagerComponent {
     
 
   }
-  rejectLeave(leaveId:number) {
-    console.log(leaveId)
-    this.leaveService.rejectLeave(leaveId).subscribe(json => {
-      let x = this.leaves
-      this.leaves = x.map(el=> {
-        if (el.id == leaveId) {
-          el.status = "Rejected"
-        }
-        return el
-      })
-    })
-  }
-  acceptLeave(leaveId:number) {
-    this.leaveService.acceptLeave(leaveId).subscribe(json=> {
-      let x = this.leaves;
-      this.leaves = x.map(el=> {
-        if (el.id == leaveId) {
-          el.status = "Approved"
-        }
-        return el
-      })
-    })
-  }
+  // rejectLeave(leaveId:number) {
+  //   console.log(leaveId)
+  //   this.leaveService.rejectLeave(leaveId).subscribe(json => {
+  //     let x = this.leaves
+  //     this.leaves = x.map(el=> {
+  //       if (el.id == leaveId) {
+  //         el.status = "Rejected"
+  //       }
+  //       return el
+  //     })
+  //   })
+  // }
+  // acceptLeave(leaveId:number) {
+  //   this.leaveService.acceptLeave(leaveId).subscribe(json=> {
+  //     let x = this.leaves;
+  //     this.leaves = x.map(el=> {
+  //       if (el.id == leaveId) {
+  //         el.status = "Approved"
+  //       }
+  //       return el
+  //     })
+  //   })
+  // }
   ngOnInit() {
     this.getEmployees();
     this.managerService.getLeaveRequests().subscribe(json => {
@@ -144,7 +144,9 @@ export class DialogContentExampleDialog {
 export class LeaveAction {
   element:Leave = {}
   leaves:Leave[]=[]
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, private leaveService:LeaveService) {
+  feedback:string = ""
+  constructor(public dialogRef: MatDialogRef<LeaveAction>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private leaveService:LeaveService) {
     this.element = this.data.element;
     this.leaves = this.data.leaves;
   }
@@ -154,15 +156,17 @@ export class LeaveAction {
   rejectLeave() {
     let leaveId = this.element.id;
     if (leaveId !== undefined)
-      this.leaveService.rejectLeave(leaveId).subscribe(json => {
+      this.leaveService.rejectLeave(leaveId, this.feedback).subscribe(json => {
         let x = this.leaves
         this.leaves = x.map(el=> {
           if (el.id == leaveId) {
             el.status = "Rejected"
+            el.feedback = this.feedback
           }
           return el
         })
       })
+    this.dialogRef.close()
   }
   acceptLeave() {
     let leaveId = this.element.id;
@@ -176,5 +180,6 @@ export class LeaveAction {
           return el
         })
       })
+    this.dialogRef.close()
   }
 }
