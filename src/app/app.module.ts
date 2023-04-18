@@ -24,6 +24,7 @@ import {MatTableModule} from '@angular/material/table';
 import { DialogContentExampleDialog } from './components/manager/manager.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
+import {TextFieldModule} from '@angular/cdk/text-field';
 
 import { LeaveRequestsComponent } from './components/leave-requests/leave-requests.component';
 import { ManagerComponent as mComponent } from './components/manager/manager.component';
@@ -33,6 +34,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { DateFormatterPipe } from './pipe/date-formatter.pipe';
 import { HolidayLeavesComponent } from './components/holiday-leaves/holiday-leaves.component';
 import { MatNativeDateModule } from '@angular/material/core';
+import { LeaveAction } from './components/manager/manager.component';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
@@ -61,7 +63,8 @@ const route: Routes = [
     NavbarComponent,
     DialogContentExampleDialog,
     DateFormatterPipe,
-    HolidayLeavesComponent
+    HolidayLeavesComponent,
+    LeaveAction,
   ],
   imports: [
     RouterModule.forRoot(route),
@@ -86,6 +89,7 @@ MatButtonModule,
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
+    TextFieldModule,
   ],
   providers: [MatDatepickerModule,],
   bootstrap: [AppComponent]

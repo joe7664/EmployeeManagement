@@ -40,9 +40,10 @@
             <ng-container matColumnDef="action">
                 <th mat-header-cell *matHeaderCellDef>Action</th>
                 <td mat-cell *matCellDef="let element">
-                    <button *ngIf="element.status=='Submittted'" (click)="rejectLeave(element.id)">Trash</button> 
-                    <button *ngIf="element.status=='Submittted'" (click)="acceptLeave(element.id)">Check</button> 
-                    <span *ngIf="element.status!=='Submittted'">Completed</span>
+                    <button mat-raised-button *ngIf="element.status=='Submitted'" (click)="openLeaveAction(element)">Action</button>
+                    <!-- <button *ngIf="element.status=='Submitted'" (click)="rejectLeave(element.id)">Trash</button> 
+                    <button *ngIf="element.status=='Submitted'" (click)="acceptLeave(element.id)">Check</button>  -->
+                    <span *ngIf="element.status!=='Submitted'">Completed</span>
                 </td>
             </ng-container>
             
