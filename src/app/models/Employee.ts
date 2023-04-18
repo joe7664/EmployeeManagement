@@ -10,4 +10,5 @@ export interface Employee {
     phoneNumber?:string,
     leaveBalance?:number,
     performanceReviews?:string[],
+    selected?:boolean,
 }

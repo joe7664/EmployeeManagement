@@ -24,11 +24,15 @@ export class ManagerComponent {
   fullLeaves:Leave[] = []
   leaveColumns = ['name', 'startDate', 'endDate', 'status', 'notes','feedback', 'action']
 
-  displayedColumns: string[] = ['First Name', 'Last Name', 'Email', 'Availability'];
+  displayedColumns: string[] = ['Check', 'First Name', 'Last Name', 'Email', 'Availability'];
   constructor(private managerService:ManagerServiceService, public dialog: MatDialog, private leaveService : LeaveService){}
   getEmployees(){
     this.managerService.getEmployees().subscribe(data => {
+      for (let el of data) {
+        el.selected = false;
+      }
       this.employees = data
+      
       console.log("EMPLOYEES", data)
     })
   }
@@ -76,8 +80,10 @@ export class ManagerComponent {
       console.log(`Dialog result: ${result}`);
     });
   }
-  getRequests() {
-    
+  getSelected() {
+    for (let el of this.employees) {
+      console.log(el.selected)
+    }
 
   }
   // rejectLeave(leaveId:number) {
@@ -108,7 +114,9 @@ export class ManagerComponent {
     this.managerService.getLeaveRequests().subscribe(json => {
       let temp : Leave[]= []
       json.map((el) => {
-        if (el.status == "Submitted") temp.push(el);
+        if (el.status == "Submitted") {
+          temp.push(el)
+        };
       })
       for (let el of json) {
         if (el.status !== "Submitted") {

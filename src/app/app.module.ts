@@ -35,6 +35,7 @@ import { DateFormatterPipe } from './pipe/date-formatter.pipe';
 import { HolidayLeavesComponent } from './holiday-leaves/holiday-leaves.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LeaveAction } from './components/manager/manager.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
@@ -89,6 +90,7 @@ const route: Routes = [
     MatNativeDateModule,
     MatFormFieldModule,
     MatInputModule,
+    MatCheckboxModule,
     TextFieldModule,
   ],
   providers: [MatDatepickerModule,],
