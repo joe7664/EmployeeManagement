@@ -1,1 +1,8 @@
-<p>holiday-leaves works!</p>
+<ol>
+    <li *ngFor="let holiday of holidays; index as i;">
+        <p>{{holiday.dates}}</p>
+        <p>{{holiday.days}}</p>
+        <p>{{holiday.name}}</p>
+        <p>{{holiday.type}}</p>
+    </li>
+</ol>
