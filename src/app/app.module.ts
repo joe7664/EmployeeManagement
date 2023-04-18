@@ -30,7 +30,7 @@ import { LeaveApplyComponent } from './components/leave-apply/leave-apply.compon
 import { ProfileComponent } from './components/profile/profile.component';
 import { HolidayLeavesComponent } from './components/holiday-leaves/holiday-leaves.component';
 const route: Routes = [
-  {path:"", component:AppComponent},
+  {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
   {path:"home", component:HomeComponent,
     children:[
