@@ -1,6 +1,12 @@
 <h1>Manager Component</h1>
 
 <mat-tab-group>
+  <mat-tab label="Goals">
+    <app-goals [employees]="employees"></app-goals>
+  </mat-tab>
+  <mat-tab label="Performance Review">
+    <app-performance-review [employees]="employees"></app-performance-review>
+  </mat-tab>
     <mat-tab label="Edit Profile"> Content 1 </mat-tab>
     <mat-tab label="Leave Details"> Content 2 </mat-tab>
     <mat-tab label="Previous Leaves"> Content 3 </mat-tab>
@@ -47,7 +53,6 @@
             
             <tr mat-header-row *matHeaderRowDef="leaveColumns"></tr>
             <tr mat-row *matRowDef="let row; columns: leaveColumns;"></tr>
-
             </table>
         </mat-tab>
     <mat-tab label="Employees">
@@ -71,7 +76,7 @@
           
         </div>
         <div>
-            <button mat-raised-button style="border-radius: 10px;">Add Goal</button>
+            <button mat-raised-button (click)="openDialog()" style="border-radius: 10px;">Add Goal</button>
         </div>
     </div>
         

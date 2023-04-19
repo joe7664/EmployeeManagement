@@ -36,6 +36,8 @@ import { HolidayLeavesComponent } from './holiday-leaves/holiday-leaves.componen
 import { MatNativeDateModule } from '@angular/material/core';
 import { LeaveAction } from './components/manager/manager.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { PerformanceReviewComponent } from './components/manager/performance-review/performance-review.component';
+import { GoalsComponent } from './components/manager/goals/goals.component';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
@@ -66,6 +68,8 @@ const route: Routes = [
     DateFormatterPipe,
     HolidayLeavesComponent,
     LeaveAction,
+    PerformanceReviewComponent,
+    GoalsComponent,
   ],
   imports: [
     RouterModule.forRoot(route),
