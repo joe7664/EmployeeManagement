@@ -18,56 +18,6 @@
        <app-leave></app-leave>
         </mat-tab>
     <mat-tab label="Employees">
-        <div style="display:flex; justify-content: space-around;">
-        <div style="display:flex;flex-direction: column; justify-content: space-around;margin:20px 0; align-items: center;">
-            <div style="text-align: center;">
-            <mat-form-field appearance="outline" >
-            <mat-label>Availability</mat-label>
-            <mat-date-range-input [rangePicker]="picker">
-              <input [(ngModel)]="startDate" matStartDate placeholder="Start date">
-              <input [(ngModel)]="endDate" matEndDate placeholder="End date">
-            </mat-date-range-input>
-            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-date-range-picker #picker></mat-date-range-picker>
-          </mat-form-field>
-        </div>
-        <div style="width:250px;justify-content: space-around; display: flex;">
-          <button mat-raised-button (click)="findAvailable()" >Find</button>
-          <button mat-raised-button (click)="getEmployees()">Reset</button>
-        </div>
-          
-        </div>
-        <div>
-            <button mat-raised-button (click)="openDialog()" style="border-radius: 10px;">Add Goal</button>
-        </div>
-    </div>
-        
-        <table mat-table [dataSource]="employees" class="mat-elevation-z8">
-            <ng-container matColumnDef="Check">
-                <th mat-header-cell *matHeaderCellDef>Check</th>
-                <td mat-cell *matCellDef="let element">
-                    <mat-checkbox [(ngModel)]="element.selected">
-                    </mat-checkbox>
-                </td>
-            </ng-container>
-            <ng-container matColumnDef="First Name">
-              <th mat-header-cell *matHeaderCellDef> First Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
-            </ng-container>
-            <ng-container matColumnDef="Last Name">
-              <th mat-header-cell *matHeaderCellDef> Last Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
-            </ng-container>
-            <ng-container matColumnDef="Email">
-              <th mat-header-cell *matHeaderCellDef> Email </th>
-              <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-            </ng-container>
-            <ng-container matColumnDef="Availability">
-                <th mat-header-cell *matHeaderCellDef>  </th>
-                <td mat-cell *matCellDef="let element"><button mat-button (click)="getAvailability(element.id)">Availability</button></td>
-              </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
-          </table>
+        <app-employees></app-employees>
     </mat-tab>
   </mat-tab-group>
