@@ -121,22 +121,32 @@ let goalTemplate:Goal = {
 }
 @Component({
   selector: 'dialog-content-example-dialog',
-  templateUrl: 'manager.component.availability.html',
+  templateUrl: './goal.component.html',
 })
 export class DialogContentExampleDialog {
   employees:Employee[] = []
   goal:Goal 
+  errorMessage:string
   constructor(public dialogRef: MatDialogRef<DialogContentExampleDialog>, 
     @Inject(MAT_DIALOG_DATA) public data: DialogData, private goalService:GoalsService) {
     this.employees = this.data.employees
     this.goal = goalTemplate;
     this.goal.deadline = new Date();
+    this.errorMessage = ""
   }
   log() {
     for (let employee of this.employees) {
-      if (employee.id !== undefined)
+      if (typeof this.goal.weightage !== "number") {
+        this.errorMessage = "Please input a number for weightage"
+      }
+      else if (employee.id !== undefined)
         this.goalService.addGoal(this.goal, employee.id).subscribe(json=> {
           console.log(json);
+          this.goal.name = "";
+          this.goal.weightage = 0;
+          this.goal.description = "";
+          this.goal.deadline = new Date();
+          this.closeDialog()
         })
       else console.log("Employee ID is undefined", employee)
     }
