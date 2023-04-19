@@ -38,6 +38,7 @@ import { LeaveAction } from './components/manager/leave/leave.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { PerformanceReviewComponent } from './components/manager/performance-review/performance-review.component';
 import { GoalsComponent } from './components/manager/goals/goals.component';
+import { EmployeeGoalsComponent as EmpGoals} from './pages/employee/emp-goals/emp-goals.component';
 import { MeetingComponent } from './components/manager/meeting/meeting.component';
 import { LeaveComponent } from './components/manager/leave/leave.component';
 import { EmployeesComponent } from './components/manager/employees/employees.component';
@@ -66,6 +67,7 @@ const route: Routes = [
     LeaveAction,
     PerformanceReviewComponent,
     GoalsComponent,
+    EmpGoals,
     MeetingComponent,
     LeaveComponent,
     EmployeesComponent,
