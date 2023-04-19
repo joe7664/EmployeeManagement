@@ -26,27 +26,20 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {TextFieldModule} from '@angular/cdk/text-field';
 
-import { LeaveRequestsComponent } from './components/leave-requests/leave-requests.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { HolidayLeavesComponent } from './leaves/holiday-leaves/holiday-leaves.component';
+import { LeaveRequestsComponent } from './leaves/leave-requests/leave-requests.component';
+import { LeaveApplyComponent } from './leaves/leave-apply/leave-apply.component';
 import { ManagerComponent as mComponent } from './components/manager/manager.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { LeaveApplyComponent } from './components/leave-apply/leave-apply.component';
-import { ProfileComponent } from './components/profile/profile.component';
 import { DateFormatterPipe } from './pipe/date-formatter.pipe';
-import { HolidayLeavesComponent } from './holiday-leaves/holiday-leaves.component';
 import { MatNativeDateModule } from '@angular/material/core';
 import { LeaveAction } from './components/manager/manager.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
-  {path:"home", component:HomeComponent,
-    children:[
-      {path:"profile", component: ProfileComponent},
-      {path:"requested", component: LeaveRequestsComponent},
-      {path:"holiday-leaves", component: HolidayLeavesComponent},
-      {path:"apply", component: LeaveApplyComponent}
-    ]
-  },
+  {path:"home", component:HomeComponent},
   {path:"**", component:HomeComponent}
 ]
 @NgModule({

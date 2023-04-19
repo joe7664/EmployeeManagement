@@ -1,6 +1,22 @@
-<mat-tab-group>
+<button (click)="toggle()">Leaves / Performance</button>
+<mat-tab-group *ngIf="switch">
     <mat-tab label="Edit Profile"> <app-profile></app-profile> </mat-tab>
     <mat-tab label="Holiday Leaves"> <app-holiday-leaves></app-holiday-leaves> </mat-tab>
     <mat-tab label="Previous Leaves"> <app-leave-requests></app-leave-requests> </mat-tab>
     <mat-tab label="Apply For Leave"> <app-leave-apply></app-leave-apply> </mat-tab>
+</mat-tab-group>
+
+<mat-tab-group *ngIf="!switch">
+    <mat-tab label="Performance Review"> Content 1 </mat-tab>
+    <mat-tab label="Personal Goals">
+        
+    </mat-tab>
+    <mat-tab label="Manager Goals">
+        <mat-tab-group>
+            <mat-tab label="Pending"> Content 3.1 </mat-tab>
+            <mat-tab label="Accepted"> Content 3.2 </mat-tab>
+        </mat-tab-group>
+    </mat-tab>
+    <mat-tab label="Request One-on-One"> Content 4 </mat-tab>
+    <mat-tab label="Feedback"> Content 5 </mat-tab>
 </mat-tab-group>

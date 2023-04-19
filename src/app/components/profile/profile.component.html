@@ -7,11 +7,11 @@
         <button (click)="edit=!edit">Edit Profile Information</button>
     </div>
     <div *ngIf="edit" class="in2">
-        <input [(ngModel)]="update.email" class="inputBlock" name="email" type="text" placeholder="email"/>
-        <input [(ngModel)]="update.firstName" class="inputBlock" name="fname" type="text" placeholder="First Name"/>
-        <input [(ngModel)]="update.lastName" class="inputBlock" name="lname" type="text" placeholder="Last Name"/>
-        <input [(ngModel)]="update.password" required class="inputBlock" name="password" type="password" placeholder="Password"/>
-        <input [(ngModel)]="update.phoneNumber" class="inputBlock" name="phone" type="tel" placeholder="Phone Number">
+        <input [(ngModel)]="update.email" class="inputBlock" name="email" type="text" placeholder="email"/><br>
+        <input [(ngModel)]="update.firstName" class="inputBlock" name="fname" type="text" placeholder="First Name"/><br>
+        <input [(ngModel)]="update.lastName" class="inputBlock" name="lname" type="text" placeholder="Last Name"/><br>
+        <input [(ngModel)]="update.password" required class="inputBlock" name="password" type="password" placeholder="Password"/><br>
+        <input [(ngModel)]="update.phoneNumber" class="inputBlock" name="phone" type="tel" placeholder="Phone Number"><br>
         <button (click)="updateInfo()">Submit</button>
     </div>
 </div>

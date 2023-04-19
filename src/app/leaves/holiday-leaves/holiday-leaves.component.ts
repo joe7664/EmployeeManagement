@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { Holiday } from 'src/app/models/Holiday';
-import { Leave } from 'src/app/models/Leave';
 import { LeaveService } from 'src/app/services/leaves.service';
-import { LoginService } from 'src/app/services/login.service';
 
 @Component({
   selector: 'app-holiday-leaves',
