@@ -21,7 +21,7 @@ import { ManagerComponent } from './pages/manager/manager.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
-import { DialogContentExampleDialog } from './components/manager/manager.component';
+import { DialogContentExampleDialog } from './components/manager/employees/employees.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {TextFieldModule} from '@angular/cdk/text-field';
@@ -34,8 +34,13 @@ import { ManagerComponent as mComponent } from './components/manager/manager.com
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { DateFormatterPipe } from './pipe/date-formatter.pipe';
 import { MatNativeDateModule } from '@angular/material/core';
-import { LeaveAction } from './components/manager/manager.component';
+import { LeaveAction } from './components/manager/leave/leave.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { PerformanceReviewComponent } from './components/manager/performance-review/performance-review.component';
+import { GoalsComponent } from './components/manager/goals/goals.component';
+import { MeetingComponent } from './components/manager/meeting/meeting.component';
+import { LeaveComponent } from './components/manager/leave/leave.component';
+import { EmployeesComponent } from './components/manager/employees/employees.component';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
@@ -59,6 +64,11 @@ const route: Routes = [
     DateFormatterPipe,
     HolidayLeavesComponent,
     LeaveAction,
+    PerformanceReviewComponent,
+    GoalsComponent,
+    MeetingComponent,
+    LeaveComponent,
+    EmployeesComponent,
   ],
   imports: [
     RouterModule.forRoot(route),
