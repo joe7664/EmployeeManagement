@@ -20,12 +20,9 @@ export interface DialogData {
 })
 export class ManagerComponent {
   employees:Employee[] = []
-  leaves:Leave[] = []
   endDate:Date = new Date()
   startDate:Date = new Date()
-  searchName:string = ""
   fullLeaves:Leave[] = []
-  leaveColumns = ['name', 'startDate', 'endDate', 'status', 'notes','feedback', 'action']
 
   displayedColumns: string[] = ['Check', 'First Name', 'Last Name', 'Email', 'Availability'];
   constructor(private managerService:ManagerServiceService, public dialog: MatDialog, private leaveService : LeaveService){}
@@ -39,14 +36,6 @@ export class ManagerComponent {
       console.log("EMPLOYEES", data)
     })
   }
-  searchChange(name:string) {
-    console.log(name)
-    let x:Leave[] = []
-    x = this.fullLeaves.filter(el => {
-      return el.firstname?.toLowerCase()?.startsWith(name.toLowerCase()) || el.lastname?.toLowerCase()?.startsWith(name.toLowerCase())
-    })
-    this.leaves = x
-  }
   getAvailability(employeeID:number) {
     // this.managerService.getEmployeeLeave(employeeID).subscribe(data=> {
     //   console.log("DATA", data)
@@ -58,18 +47,6 @@ export class ManagerComponent {
       console.log("AVAILABLE", data)
       this.employees = data;
     })
-  }
-  openLeaveAction(element:Leave) {
-    const dialogRef = this.dialog.open(LeaveAction, {
-      data: {
-        element,
-        leaves:this.leaves
-      },
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
   }
 
   openDialog() {
@@ -93,22 +70,7 @@ export class ManagerComponent {
   }
   ngOnInit() {
     this.getEmployees();
-    this.managerService.getLeaveRequests().subscribe(json => {
-      let temp : Leave[]= []
-      json.map((el) => {
-        if (el.status == "Submitted") {
-          temp.push(el)
-        };
-      })
-      for (let el of json) {
-        if (el.status !== "Submitted") {
-           temp.push(el);
-        }
-      }
-      this.leaves = temp
-      this.fullLeaves = temp;
-      console.log(this.leaves)
-    })
+    
   }
   
 
@@ -155,52 +117,6 @@ export class DialogContentExampleDialog {
     console.log(this.employees);
   }
   closeDialog() {
-    this.dialogRef.close()
-  }
-}
-@Component({
-  selector: 'leave-action',
-  templateUrl: 'leave.component.html',
-})
-export class LeaveAction {
-  element:Leave = {}
-  leaves:Leave[]=[]
-  feedback:string = ""
-  constructor(public dialogRef: MatDialogRef<LeaveAction>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private leaveService:LeaveService) {
-    this.element = this.data.element;
-    this.leaves = this.data.leaves;
-  }
-  ngOnInit() {
-    console.log(this.element)
-  }
-  rejectLeave() {
-    let leaveId = this.element.id;
-    if (leaveId !== undefined)
-      this.leaveService.rejectLeave(leaveId, this.feedback).subscribe(json => {
-        let x = this.leaves
-        this.leaves = x.map(el=> {
-          if (el.id == leaveId) {
-            el.status = "Rejected"
-            el.feedback = this.feedback
-          }
-          return el
-        })
-      })
-    this.dialogRef.close()
-  }
-  acceptLeave() {
-    let leaveId = this.element.id;
-    if (leaveId !== undefined)
-      this.leaveService.acceptLeave(leaveId).subscribe(json=> {
-        let x = this.leaves;
-        this.leaves = x.map(el=> {
-          if (el.id == leaveId) {
-            el.status = "Approved"
-          }
-          return el
-        })
-      })
     this.dialogRef.close()
   }
 }

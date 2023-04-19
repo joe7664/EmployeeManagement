@@ -34,10 +34,12 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { DateFormatterPipe } from './pipe/date-formatter.pipe';
 import { HolidayLeavesComponent } from './components/holiday-leaves/holiday-leaves.component';
 import { MatNativeDateModule } from '@angular/material/core';
-import { LeaveAction } from './components/manager/manager.component';
+import { LeaveAction } from './components/manager/leave/leave.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { PerformanceReviewComponent } from './components/manager/performance-review/performance-review.component';
 import { GoalsComponent } from './components/manager/goals/goals.component';
+import { MeetingComponent } from './components/manager/meeting/meeting.component';
+import { LeaveComponent } from './components/manager/leave/leave.component';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
@@ -70,6 +72,8 @@ const route: Routes = [
     LeaveAction,
     PerformanceReviewComponent,
     GoalsComponent,
+    MeetingComponent,
+    LeaveComponent,
   ],
   imports: [
     RouterModule.forRoot(route),
