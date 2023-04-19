@@ -1,16 +1,37 @@
 <h1 mat-dialog-title>Will be Availability Sheet</h1>
 <div mat-dialog-content>
-
-  <!-- My favorite animal is:
-  <ul>
-    <li>
-      <span *ngIf="data.animal === 'panda'">&#10003;</span> Panda
-    </li>
-    <li>
-      <span *ngIf="data.animal === 'unicorn'">&#10003;</span> Unicorn
-    </li>
-    <li>
-      <span *ngIf="data.animal === 'lion'">&#10003;</span> Lion
-    </li>
-  </ul> -->
+  <mat-form-field style="display: block;" class="example-full-width">
+    <mat-label>Goal Title</mat-label>
+    <input matInput [(ngModel)]="goal.name" placeholder="Goal Title" value="Sushi">
+  </mat-form-field>
+  <mat-form-field style="display: block;" class="example-full-width">
+    <mat-label>Goal Description</mat-label>
+    <textarea matInput [(ngModel)]="goal.description" placeholder="Ex. Pizza" value="Sushi"></textarea>
+  </mat-form-field>
+  <mat-form-field style="display: block;" class="example-full-width">
+    <mat-label>Weightage</mat-label>
+    <input matInput [(ngModel)]="goal.weightage" type="number" placeholder="Weightage" value="">
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Deadline</mat-label>
+    <input matInput [(ngModel)]="goal.deadline" [matDatepicker]="picker">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field> 
+  <div style="display:flex; justify-content: space-around;">
+    <button mat-raised-button (click)="closeDialog()">Cancel</button>
+    <button mat-raised-button (click)="log()">Send</button>
+  </div>
 </div>
+
+  <!-- <mat-form-field appearance="outline">
+    <input matInput
+          name="selected_time_A"
+          [(ngModel)]="selectedTime"
+          [ngxMatTimepicker]="pickerA"
+           />
+    <mat-icon matSuffix
+              (click)="pickerA.open()">
+    </mat-icon>
+  <ngx-mat-timepicker #pickerA></ngx-mat-timepicker>
+</mat-form-field> -->

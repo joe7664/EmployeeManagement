@@ -1,13 +1,16 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Employee } from 'src/app/models/Employee';
+import { Goal } from 'src/app/models/Goal';
 import { Leave } from 'src/app/models/Leave';
+import { GoalsService } from 'src/app/services/goals.service';
 import { LeaveService } from 'src/app/services/leaves.service';
 import { ManagerServiceService } from 'src/app/services/manager-service.service';
 
 export interface DialogData {
   leaves: Leave[];
   element:Leave;
+  employees:Employee[];
 }
 
 @Component({
@@ -45,10 +48,10 @@ export class ManagerComponent {
     this.leaves = x
   }
   getAvailability(employeeID:number) {
-    this.managerService.getEmployeeLeave(employeeID).subscribe(data=> {
-      console.log("DATA", data)
-      this.openDialog(data)
-    })
+    // this.managerService.getEmployeeLeave(employeeID).subscribe(data=> {
+    //   console.log("DATA", data)
+      // this.openDialog(data)
+    // })
   }
   findAvailable() {
     this.managerService.findAvailableEmployees({"startDate":this.startDate,"endDate":this.endDate, "status":"Submitted"}).subscribe(data => {
@@ -69,10 +72,10 @@ export class ManagerComponent {
     });
   }
 
-  openDialog(leaves:Leave[]) {
+  openDialog() {
     const dialogRef = this.dialog.open(DialogContentExampleDialog, {
       data: {
-        leaves,
+        employees:this.getSelected(),
       },
     });
 
@@ -81,34 +84,13 @@ export class ManagerComponent {
     });
   }
   getSelected() {
+    let temp : Employee[] = []
     for (let el of this.employees) {
-      console.log(el.selected)
+      if (el.selected) temp.push(el)
     }
+    return temp;
 
   }
-  // rejectLeave(leaveId:number) {
-  //   console.log(leaveId)
-  //   this.leaveService.rejectLeave(leaveId).subscribe(json => {
-  //     let x = this.leaves
-  //     this.leaves = x.map(el=> {
-  //       if (el.id == leaveId) {
-  //         el.status = "Rejected"
-  //       }
-  //       return el
-  //     })
-  //   })
-  // }
-  // acceptLeave(leaveId:number) {
-  //   this.leaveService.acceptLeave(leaveId).subscribe(json=> {
-  //     let x = this.leaves;
-  //     this.leaves = x.map(el=> {
-  //       if (el.id == leaveId) {
-  //         el.status = "Approved"
-  //       }
-  //       return el
-  //     })
-  //   })
-  // }
   ngOnInit() {
     this.getEmployees();
     this.managerService.getLeaveRequests().subscribe(json => {
@@ -131,18 +113,39 @@ export class ManagerComponent {
   
 
 }
-
+let goalTemplate:Goal = {
+  name:"",
+  description:"",
+  deadline:undefined,
+  weightage:0,
+}
 @Component({
   selector: 'dialog-content-example-dialog',
   templateUrl: 'manager.component.availability.html',
 })
 export class DialogContentExampleDialog {
-  leaves:Leave[] = []
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {
-    this.leaves = this.data.leaves;
+  employees:Employee[] = []
+  goal:Goal 
+  constructor(public dialogRef: MatDialogRef<DialogContentExampleDialog>, 
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private goalService:GoalsService) {
+    this.employees = this.data.employees
+    this.goal = goalTemplate;
+    this.goal.deadline = new Date();
+  }
+  log() {
+    for (let employee of this.employees) {
+      if (employee.id !== undefined)
+        this.goalService.addGoal(this.goal, employee.id).subscribe(json=> {
+          console.log(json);
+        })
+      else console.log("Employee ID is undefined", employee)
+    }
   }
   ngOnInit() {
-    console.log(this.leaves)
+    console.log(this.employees);
+  }
+  closeDialog() {
+    this.dialogRef.close()
   }
 }
 @Component({
@@ -191,3 +194,11 @@ export class LeaveAction {
     this.dialogRef.close()
   }
 }
+
+
+  // convertTime(time:string) : string{
+  //   let timeArr = time.split(" ");
+  //   if (timeArr[1] == "PM") timeArr[0] = timeArr[0].split(";")+12
+  //   if (time.split(":")[0].length == 1) return "0"+time+":00"
+  //   return time+":00";
+  // }
