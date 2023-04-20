@@ -1,6 +1,26 @@
-<div id="navbar">
+<!-- <div id="navbar">
     <h1>RevWorkforce</h1>
     <div>
         <button class="loginButton" routerLink="/login">Login</button>
         <button class="logoutButton" (click)="logout()">Logout</button>
-    </div>
+    </div> -->
+<div id="navbar">
+    <mat-toolbar style="display:flex;justify-content: space-between;">
+        <!-- <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button> -->
+        <span routerLink="/home">RevWorkforce</span>
+        <div style="display:flex;flex-direction: row; align-items: center;">
+            <button mat-raised-button *ngIf="isLoggedIn!=0" routerLink="/home" >
+                Employee
+            </button>
+            <button mat-raised-button *ngIf="isManager!=0" routerLink="/manager" >
+                Manager
+            </button>
+            <button (click)="logout()" *ngIf="isLoggedIn!=0" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+                <i class="material-icons">logout</i>
+            </button>
+        </div>
+    </mat-toolbar>
+</div>
+   
