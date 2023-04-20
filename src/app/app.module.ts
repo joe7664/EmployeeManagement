@@ -39,6 +39,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { LeaveAction } from './components/manager/leave/leave.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { PerformanceReviewComponent } from './components/manager/performance-review/performance-review.component';
+import { PerformanceComponent } from './performance/performance.component';
 import { GoalsComponent } from './components/manager/goals/goals.component';
 import { EmployeeGoalsComponent as EmpGoals} from './pages/employee/emp-goals/emp-goals.component';
 import { ManagerGoalsComponent as ManGoals} from './pages/employee/man-goals/man-goals.component';
@@ -73,6 +74,7 @@ const route: Routes = [
     GoalsComponent,
     EmpGoals,
     ManGoals,
+    PerformanceComponent,
     MeetingComponent,
     LeaveComponent,
     EmployeesComponent,

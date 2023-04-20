@@ -1,4 +1,7 @@
 export interface Review {
-    reviewNumbers:number,
-    
+    reviewNumber:number,
+    deliverables:String,
+    achievements:String,
+    areaOfImprovement:String,
+    score:number
 }

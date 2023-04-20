@@ -45,4 +45,11 @@ export class GoalsService {
     return this.http.post("http://localhost:9000/goals/employees/"+id, 
         goal, {responseType:"text"})
   }
+  completeGoal(id:number){
+    const header = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.post("http://localhost:9000/goals/"+id+"/complete", 
+        "", {responseType:"text"})
+  }
 }

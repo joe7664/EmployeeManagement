@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Leave } from 'src/app/models/Leave';
 import { LeaveService } from 'src/app/services/leaves.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -9,8 +9,8 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./leave-requests.component.css']
 })
 export class LeaveRequestsComponent {
-
-  leaves: Leave[]=[];
+  @Input()leaves: Leave[]=[];
+  
 
   displayedColumns: string[] = ['Start Date', 'End Date', 'Type', 'Status', 'Notes'];
   constructor(private leaveService:LeaveService, private loginService:LoginService){}
