@@ -9,7 +9,7 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./emp-goals.component.css']
 })
 export class EmployeeGoalsComponent {
-  displayColumns = ['id', 'name', 'description', 'deadline', 'status', 'weightage', 'comment']
+  displayColumns = ['name', 'description', 'deadline', 'status', 'weightage']
   goals:Goal[] = [];
   
   constructor(private goalService:GoalsService, private emp:LoginService){

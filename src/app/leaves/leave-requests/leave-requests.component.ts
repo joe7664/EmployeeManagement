@@ -18,4 +18,7 @@ export class LeaveRequestsComponent {
   ngOnInit():void{
     this.leaveService.viewLeaves(this.loginService.id).subscribe(json => this.leaves = json);
   }
+  onChanges(){
+    this.ngOnInit();
+  }
 }
