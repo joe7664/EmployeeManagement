@@ -8,10 +8,13 @@ import { Employee } from '../models/Employee';
 })
 export class LoginService {
   id:number = 0
+  isManager:number = 0
 
   constructor(private http:HttpClient) { 
     let sessionID = localStorage.getItem("employeeID")
-    if (sessionID !== null && sessionID!=="null") this.id = sessionID as unknown as number;
+    let isManager = localStorage.getItem("isManager")
+    if (sessionID !== null && sessionID!=="0") this.id = sessionID as unknown as number;
+    if (isManager !== "0" && isManager!==null) this.isManager = isManager as unknown as number;
   }
   login(employee:Employee) : Observable<Employee> {
     const header = new HttpHeaders();
