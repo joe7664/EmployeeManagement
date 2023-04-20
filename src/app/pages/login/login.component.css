@@ -27,7 +27,5 @@
 }
 .submitButton {
     display: block;
-    width: 95px;
-    padding: 10px 15px;
-    margin: auto;
+    margin: 10px auto;
 }

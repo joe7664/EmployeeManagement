@@ -29,5 +29,12 @@ export class LoginService {
     header.append("Access-Control-Allow-Origin", "*")
     return this.http.post("http://localhost:9000/revWorkforce/register", employee,{responseType:"text"})
   }
+  resetPassword(email:string) : Observable<any> {
+    const header = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.post("http://localhost:9000/revWorkforce/password-reset", {"email":email}, {responseType:"text"})
+
+  }
   
 }

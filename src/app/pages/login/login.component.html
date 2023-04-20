@@ -8,10 +8,33 @@
   <form>
     <input [(ngModel)]="username" class="inputBlock" name="username" type="text" placeholder="Username">
     <input [(ngModel)]="password" class="inputBlock" name="password" type="password" placeholder="Password"/>
-    <button (click)="submit()" class="submitButton" type="submit">Login</button>
+    <div style="max-width:300px; margin:auto; " >
+      <button mat-raised-button (click)="submit()" class="submitButton" type="submit">Login</button>
+      <button mat-raised-button (click)="reset()" class="submitButton">Forgot Password</button>
+    </div>
     <p style="text-align:center; padding-top: 10px;">{{loginMessage}}</p>
   </form>
+  <div *ngIf="showReset" >
+    <div style="display:flex; flex-direction:column; margin:auto; max-width:400px">
+      <div style="margin:auto">
+        <mat-form-field  class="example-full-width" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input [(ngModel)]="emailForgot" matInput style="width:80%" >
+        </mat-form-field>
+      </div>
+      <div style="margin:auto">
+        <button mat-raised-button (click)="resetPassword()">Reset Password</button>
+
+      </div>
+      
+    </div>
+  </div>
 </div>
+
+
+
+
+<!-- BELONGS IN ADMIN -->
 <div id="register" style="margin-top:20px">
   <mat-card style="width:90%; margin: auto; padding: 10px 0;">
     <h2 style="text-align: center; margin-bottom:0">Register New Employee</h2>
