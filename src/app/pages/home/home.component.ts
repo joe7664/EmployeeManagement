@@ -14,7 +14,7 @@ export class HomeComponent {
     if (this.loginService.id == 0) {
       this.route.navigate(['/login'])
     }
-    if (localStorage.getItem("isManager") == "true") this.isManager = true;
+    if (this.loginService.isManager == 1) this.isManager = true;
   }
 
   showID() {

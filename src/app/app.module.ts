@@ -25,6 +25,8 @@ import { DialogContentExampleDialog } from './components/manager/employees/emplo
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatButtonModule} from '@angular/material/button';
 import {TextFieldModule} from '@angular/cdk/text-field';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { HolidayLeavesComponent } from './leaves/holiday-leaves/holiday-leaves.component';
@@ -46,6 +48,7 @@ const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
   {path:"home", component:HomeComponent},
+  {path:"manager", component:ManagerComponent},
   {path:"**", component:HomeComponent}
 ]
 @NgModule({
@@ -76,6 +79,7 @@ const route: Routes = [
     RouterModule.forRoot(route),
     ReactiveFormsModule,
     HttpClientModule,
+    MatToolbarModule,
     MatFormFieldModule,
     CommonModule,
     FormsModule,
@@ -88,6 +92,7 @@ const route: Routes = [
     MatTabsModule,
     MatTableModule,
   MatDatepickerModule,
+  MatIconModule,
   MatButtonModule,
     MatListModule,
     MatCardModule,
