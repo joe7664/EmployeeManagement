@@ -18,7 +18,9 @@ export class LoginComponent {
   managerId:string="";
   regPassword:string="";
   message:string="";
-  loginMessage:string=""
+  loginMessage:string="";
+  showReset:boolean = false;
+  emailForgot:string = "";
 
   constructor(private loginService:LoginService, private router:Router){}
   toggleType() {
@@ -43,6 +45,14 @@ export class LoginComponent {
     } else {
       console.log("How did you get here???")
     }
+  }
+  reset() {
+    this.showReset = !this.showReset
+  }
+  resetPassword() {
+    this.loginService.resetPassword(this.emailForgot).subscribe(data => {
+      console.log(data)
+    });
   }
   register() {
     this.loginService.register({
