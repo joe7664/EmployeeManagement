@@ -46,11 +46,13 @@ import { ManagerGoalsComponent as ManGoals} from './pages/employee/man-goals/man
 import { MeetingComponent } from './components/manager/meeting/meeting.component';
 import { LeaveComponent } from './components/manager/leave/leave.component';
 import { EmployeesComponent } from './components/manager/employees/employees.component';
+import { PatchEmployee } from './pages/admin/admin.component';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
   {path:"home", component:HomeComponent},
   {path:"manager", component:ManagerComponent},
+  {path:"admin", component:AdminComponent},
   {path:"**", component:HomeComponent}
 ]
 @NgModule({
@@ -62,6 +64,7 @@ const route: Routes = [
     ManagerComponent,
     AdminComponent,
     LeaveRequestsComponent,
+    PatchEmployee,
     LeaveApplyComponent,
     ProfileComponent,
     mComponent,
@@ -73,6 +76,7 @@ const route: Routes = [
     PerformanceReviewComponent,
     GoalsComponent,
     EmpGoals,
+    AdminComponent,
     ManGoals,
     PerformanceComponent,
     MeetingComponent,
