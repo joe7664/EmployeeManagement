@@ -82,6 +82,7 @@ const route: Routes = [
     MeetingComponent,
     LeaveComponent,
     EmployeesComponent,
+    PatchEmployee,
   ],
   imports: [
     RouterModule.forRoot(route),

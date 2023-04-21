@@ -1,4 +1,17 @@
-
+<style>
+    #register {
+        width:300px
+    }
+.inputBlock {
+    display: block;
+    height: 30px;
+    padding-left: 10px;
+    max-width: 300px;
+    width: 70%;
+    text-align: left;
+    margin: 15px auto;
+}
+</style>
 <div id="register" style="margin-top:20px">
     <mat-card style="width:90%; margin: auto; padding: 10px 0;">
       <h2 style="text-align: center; margin-bottom:0">Register New Employee</h2>
@@ -9,9 +22,11 @@
       <input [(ngModel)]="employee.lastName" class="inputBlock" name="lname" type="text" placeholder="Last name"/>
       <input [(ngModel)]="employee.phoneNumber" class="inputBlock" name="phone" type="tel" placeholder="Phone Number">
       <input [(ngModel)]="employee.managerId" class="inputBlock" name="manager ID" type="text" placeholder="Manager's ID">
-      <input [(ngModel)]="employee.isManager" class="inputBlock" name="Is Manager" type="text" placeholder="Is Manager? Y = 1; N = 0">
+      <input [(ngModel)]="employee.leaveBalance" matInput class="inputBlock" name="leave Balance" type="text" placeholder="Leave Balance">
+      <input [(ngModel)]="employee.isManager" matInput class="inputBlock" name="Is Manager" type="text" placeholder="Is Manager? Y = 1; N = 0">
+
       <div style="margin:auto">
-        <button (click)="patch()" mat-raised-button class="submitButton" type="submit">Register</button>
+        <button (click)="patch()" mat-raised-button class="submitButton" type="submit">Update</button>
 
       </div>
     </form>

@@ -24,7 +24,7 @@ export class AdminComponent {
   constructor(private loginService:LoginService, private adminService:AdminService,public dialog: MatDialog,){}
 
   regPassword:string="";
-  displayedColumns: string[] = ['Check', 'First Name', 'Last Name', 'Email', 'Availability'];
+  displayedColumns: string[] = ['ID', 'Name', 'Leave', 'Email', 'Availability'];
   register() {
     this.loginService.register({
       email:this.email, 
