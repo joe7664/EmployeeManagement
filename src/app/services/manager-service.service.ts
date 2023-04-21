@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Employee } from '../models/Employee';
 import { Goal } from '../models/Goal';
 import { Leave } from '../models/Leave';
+import { Review } from '../models/Review';
 import { LoginService } from './login.service';
 
 @Injectable({
@@ -42,6 +43,13 @@ export class ManagerServiceService {
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
     return this.http.get<Goal[]>("http://localhost:9000/goals/manager/" + this.loginService.id,
+    {headers:header})
+  }
+  getPerformanceReviews() {
+    const header = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.get<Review[]>("http://localhost:9000/performance/manager/" + this.loginService.id,
     {headers:header})
   }
 }
