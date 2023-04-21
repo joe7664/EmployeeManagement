@@ -11,6 +11,7 @@ export interface DialogData {
   leaves: Leave[];
   element:Leave;
   employees:Employee[];
+  employee:Employee
 }
 
 @Component({
