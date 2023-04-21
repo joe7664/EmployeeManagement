@@ -1,0 +1,20 @@
+
+<div id="register" style="margin-top:20px">
+    <mat-card style="width:90%; margin: auto; padding: 10px 0;">
+      <h2 style="text-align: center; margin-bottom:0">Register New Employee</h2>
+    <form>
+      <input [(ngModel)]="employee.email" required class="inputBlock" name="email" type="text" placeholder="email">
+      <input [(ngModel)]="employee.password" required class="inputBlock" name="password" type="password" placeholder="Password"/>
+      <input [(ngModel)]="employee.firstName" class="inputBlock" name="fname" type="text" placeholder="First Name">
+      <input [(ngModel)]="employee.lastName" class="inputBlock" name="lname" type="text" placeholder="Last name"/>
+      <input [(ngModel)]="employee.phoneNumber" class="inputBlock" name="phone" type="tel" placeholder="Phone Number">
+      <input [(ngModel)]="employee.managerId" class="inputBlock" name="manager ID" type="text" placeholder="Manager's ID">
+      <input [(ngModel)]="employee.isManager" class="inputBlock" name="Is Manager" type="text" placeholder="Is Manager? Y = 1; N = 0">
+      <div style="margin:auto">
+        <button (click)="patch()" mat-raised-button class="submitButton" type="submit">Register</button>
+
+      </div>
+    </form>
+    <!-- <p style="text-align:center; padding-top: 10px;">{{message}}</p> -->
+  </mat-card>
+  </div>

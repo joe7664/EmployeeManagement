@@ -8,17 +8,12 @@ import { LoginService } from 'src/app/services/login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  loginMessage:string="";
+  showReset:boolean = false;
+  emailForgot:string = "";
   type:string = "employee";
   username:string="";
   password:string="";
-  email:string="";
-  fName:string="";
-  lName:string = "";
-  phone:string="";
-  managerId:string="";
-  regPassword:string="";
-  message:string="";
-  loginMessage:string=""
 
   constructor(private loginService:LoginService, private router:Router){}
   toggleType() {
@@ -44,21 +39,13 @@ export class LoginComponent {
       console.log("How did you get here???")
     }
   }
-  register() {
-    this.loginService.register({
-      email:this.email, 
-      password:this.regPassword, 
-      firstName:this.fName, 
-      lastName:this.lName, 
-      phoneNumber:this.phone, 
-      managerId:this.managerId as unknown as number,
-      isManager:0,
-      }).subscribe(
-        (data) => {
-        this.message = "Employee created Succesfully"
-      }, (error) => {
-        console.log(error)
-        this.message= error.error
-      })
+  reset() {
+    this.showReset = !this.showReset
   }
+  resetPassword() {
+    this.loginService.resetPassword(this.emailForgot).subscribe(data => {
+      console.log(data)
+    });
+  }
+
 }

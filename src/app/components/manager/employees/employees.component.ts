@@ -73,6 +73,7 @@ let goalTemplate:Goal = {
   description:"",
   deadline:undefined,
   weightage:0,
+  personal:1,
 }
 @Component({
   selector: 'dialog-content-example-dialog',
