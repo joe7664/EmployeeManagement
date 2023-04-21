@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Review } from '../models/Review';
 import { ReviewService } from '../services/review.service';
 import { LoginService } from '../services/login.service';
@@ -9,11 +9,15 @@ import { LoginService } from '../services/login.service';
   styleUrls: ['./performance.component.css']
 })
 export class PerformanceComponent {
-  displayColumns = ['deliverables', 'achievements', 'improvement', 'score']
-  reviews:Review[] = [];
+  displayColumns = ['deliverables', 'achievements', 'improvement', 'score', 'feedback']
+  @Input()reviews:Review[] = [];
   
   constructor(private reviewService:ReviewService, private emp:LoginService){ }
   ngOnInit(){
     this.reviewService.viewEmployeeReviews(this.emp.id).subscribe(json => this.reviews = json);
+  }
+  
+  onChanges(){
+    this.ngOnInit();
   }
 }
