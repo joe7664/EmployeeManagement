@@ -3,6 +3,7 @@ import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dial
 import { Employee } from 'src/app/models/Employee';
 import { Goal } from 'src/app/models/Goal';
 import { Leave } from 'src/app/models/Leave';
+import { Meeting } from 'src/app/models/Meeting';
 import { Review } from 'src/app/models/Review';
 import { GoalsService } from 'src/app/services/goals.service';
 import { LeaveService } from 'src/app/services/leaves.service';
@@ -25,6 +26,7 @@ export class ManagerComponent {
   employees:Employee[] = []
   goals: Goal[] = []
   reviews:Review[] = []
+  meetings:Meeting[] = []
 
   constructor(private managerService:ManagerServiceService, public dialog: MatDialog, private leaveService : LeaveService){
     this.getEmployees();
@@ -33,6 +35,7 @@ export class ManagerComponent {
     this.managerService.getEmployees().subscribe(data => {
       this.goals = []
       this.reviews = []
+      console.log(data);
       for (let el of data) {
         el.selected = false;
         for (let goal of el.goal as unknown as Goal[]) {

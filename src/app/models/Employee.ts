@@ -1,5 +1,6 @@
 import { Goal } from "./Goal";
 import { Leave } from "./Leave";
+import { Meeting } from "./Meeting";
 
 export interface Employee {
     email?:string,
@@ -15,5 +16,6 @@ export interface Employee {
     selected?:boolean,
     goal?:Goal[],
     leaves?:Leave[],
+    meetings?:Meeting[],
 
 }
