@@ -58,6 +58,7 @@ export class AdminComponent {
   }
   ngOnInit() {
     this.adminService.getEmployeeGoals().subscribe(data => {
+      console.log("Employees", data);
       this.employees = data;
     })
   }

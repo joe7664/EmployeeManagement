@@ -9,22 +9,45 @@ import { ManagerServiceService } from 'src/app/services/manager-service.service'
   styleUrls: ['./goals.component.css']
 })
 export class GoalsComponent {
-  @Input() employees:Employee[]=[]
+  // @Input() employees:Employee[]=[]
   displayColumns = ['id', 'name', 'employee', 'description', 'deadline', 'status', 'weightage', 'comment']
-  goals:Goal[] = []
+  @Input() goals:Goal[] = []
   constructor(private managerService:ManagerServiceService){
     
   }
+  isEmpty(list : Goal[]) {
+    if (list.length == 0) return false;
+    return true;
+  }
   ngOnInit() {
-    this.managerService.getEmployeeGoals().subscribe(data => {
-      for (let el of data) {
-        console.log("EL", el)
-        let employee = this.employees.find(employee => employee.id == el.employeeId) as unknown as Employee
-        console.log(employee)
-        el.employee = employee.firstName as unknown as string + " " + employee.lastName;
-      }
-      this.goals = data
-    })
+    // console.log(this.employees)
+    // for (let emp of this.employees) {
+    //   for (let goal of emp.goal as unknown as Goal[]) {
+    //     goal.employee = emp.firstName + " " +  emp.lastName
+    //     this.goals.push(goal);
+    //   }
+    // }
+    // console.log(this.goals)
+    // this.managerService.getEmployeeGoals().subscribe(data => {
+    //   for (let el of data) {
+    //     let employee = this.employees.find(employee => employee.id == el.employeeId) as unknown as Employee
+    //     // console.log(employee)
+    //     el.employee = employee.firstName as unknown as string + " " + employee.lastName;
+    //   }
+    //   this.goals = data
+    // })
+    console.log(this.goals);
+  }
+  refresh() {
+    // console.log(this.employees)
+    // for (let emp of this.employees) {
+    //   for (let goal of emp.goal as unknown as Goal[]) {
+    //     goal.employee = emp.firstName + " " +  emp.lastName
+    //     this.goals.push(goal);
+    //   }
+    // }
+    console.log(this.goals)
+
   }
 
 }

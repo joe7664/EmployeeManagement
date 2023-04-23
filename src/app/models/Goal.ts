@@ -1,3 +1,5 @@
+import { Review } from "./Review"
+
 export interface Goal {
     id ?: number,
     employee?:string,
@@ -8,5 +10,6 @@ export interface Goal {
     comments ?: string,
     status ?: string,
     personal ?: number
-    employeeId?:string
+    employeeId?:string,
+    performanceReviews?:Review[]
 }

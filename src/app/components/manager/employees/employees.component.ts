@@ -24,7 +24,7 @@ export class EmployeesComponent {
       }
       this.employees = data
       
-      console.log("EMPLOYEES", data)
+      // console.log("EMPLOYEES", data)
     })
 
   }

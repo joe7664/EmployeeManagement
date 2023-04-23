@@ -1,12 +1,12 @@
-<mat-tab-group>
-  <mat-tab label="Meetings">
-    <app-meeting></app-meeting>
+<mat-tab-group >
+  <mat-tab  label="Meetings">
+    <app-meeting ></app-meeting>
   </mat-tab>
   <mat-tab label="Goals">
-    <app-goals [employees]="employees"></app-goals>
+    <app-goals [goals]="goals"></app-goals>
   </mat-tab>
   <mat-tab label="Performance Review">
-    <app-performance-review [employees]="employees"></app-performance-review>
+    <app-performance-review [reviews]="reviews"></app-performance-review>
   </mat-tab>
     <mat-tab label="Leave Requests">
        <app-leave></app-leave>
