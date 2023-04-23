@@ -28,6 +28,7 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { FeedbackDialog } from './components/manager/performance-review/performance-review.component';
+import { GoalsAdminComponent } from './pages/admin/goals/goals.component';
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { HolidayLeavesComponent } from './leaves/holiday-leaves/holiday-leaves.component';
@@ -49,13 +50,16 @@ import { LeaveComponent } from './components/manager/leave/leave.component';
 import { EmployeesComponent } from './components/manager/employees/employees.component';
 import { PatchEmployee } from './pages/admin/admin.component';
 import { LeavesComponent } from './pages/admin/leaves/leaves.component';
+import { ReviewsComponent } from './pages/admin/reviews/reviews.component';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
+  {path:"admin/goals", component:GoalsAdminComponent},
   {path:"home", component:HomeComponent},
   {path:"manager", component:ManagerComponent},
   {path:"admin", component:AdminComponent},
   {path:"admin/leaves", component:LeavesComponent},
+  {path:"admin/reviews", component:ReviewsComponent},
   {path:"**", component:HomeComponent}
 ]
 @NgModule({
@@ -69,6 +73,7 @@ const route: Routes = [
     AdminComponent,
     LeaveRequestsComponent,
     PatchEmployee,
+    GoalsAdminComponent,
     LeaveApplyComponent,
     ProfileComponent,
     mComponent,
@@ -88,6 +93,7 @@ const route: Routes = [
     EmployeesComponent,
     PatchEmployee,
     LeavesComponent,
+    ReviewsComponent,
   ],
   imports: [
     RouterModule.forRoot(route),

@@ -1,0 +1,42 @@
+<mat-toolbar style="display:flex;justify-content: space-between;">
+    <span routerLink="/admin">RevWorkforce</span>
+    <div style="display:flex;flex-direction: row; align-items: center;">
+        <button routerLink="/admin/leaves">Leaves</button>
+        <button routerLink="/admin/goals">Goals</button>
+        <button routerLink="/admin/reviews">Reviews</button>
+    </div>
+</mat-toolbar>
+<table  mat-table [dataSource]="goals" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}}  </td>
+    </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let element"> {{element.description}}</td>
+    </ng-container>
+    <ng-container matColumnDef="deadline">
+        <th mat-header-cell *matHeaderCellDef> Deadline</th>
+        <td mat-cell *matCellDef="let element"> {{element.deadline | dateFormatter}}</td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef> Status</th>
+        <td mat-cell *matCellDef="let element"> {{element.status}}</td>
+    </ng-container>
+    <ng-container matColumnDef="weightage">
+        <th mat-header-cell *matHeaderCellDef> Weightage</th>
+        <td mat-cell *matCellDef="let element"> {{element.weightage}}</td>
+    </ng-container>
+    <ng-container matColumnDef="comment">
+        <th mat-header-cell *matHeaderCellDef> Comment</th>
+        <td mat-cell *matCellDef="let element"> {{element.comment}}</td>
+    </ng-container>
+    
+    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+
+    </table>
