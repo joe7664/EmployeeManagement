@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Feedback</h1>
+<div mat-dialog-content>
+  <mat-form-field style="display: block;" class="example-full-width">
+    <mat-label>Deliverable</mat-label>
+    <input matInput disabled [(ngModel)]="review.deliverables" placeholder="Goal Title" value="Sushi">
+  </mat-form-field>
+  <mat-form-field style="display: block;" class="example-full-width">
+    <mat-label>Feedback</mat-label>
+    <textarea matInput [(ngModel)]="tempFeedback" placeholder="" value="Sushi"></textarea>
+  </mat-form-field>
+  <mat-form-field style="display: block;" class="example-full-width">
+    <mat-label>Score</mat-label>
+    <input matInput [(ngModel)]="tempScore" type="number" placeholder="Score (1-100)" value="">
+  </mat-form-field>
+  <div style="display:flex; justify-content: space-around;">
+    <button mat-raised-button (click)="closeDialog()">Cancel</button>
+    <button mat-raised-button (click)="submit()">Send</button>
+  </div>
+
+  <p style="margin:10px 0">{{errorMessage}}</p>
+</div>

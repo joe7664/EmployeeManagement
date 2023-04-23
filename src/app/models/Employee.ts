@@ -1,9 +1,11 @@
+import { Goal } from "./Goal";
+import { Leave } from "./Leave";
+
 export interface Employee {
     email?:string,
     firstName?:string,
     id?:number,
     lastName?:string,
-    leaves?:string[],
     isManager?:number,
     managerId?:number,
     password?:string,
@@ -11,4 +13,7 @@ export interface Employee {
     leaveBalance?:number,
     performanceReviews?:string[],
     selected?:boolean,
+    goal?:Goal[],
+    leaves?:Leave[],
+
 }

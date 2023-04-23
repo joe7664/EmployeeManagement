@@ -27,6 +27,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import { FeedbackDialog } from './components/manager/performance-review/performance-review.component';
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { HolidayLeavesComponent } from './leaves/holiday-leaves/holiday-leaves.component';
@@ -64,6 +65,7 @@ const route: Routes = [
     HomeComponent,
     EmployeeComponent,
     ManagerComponent,
+    FeedbackDialog,
     AdminComponent,
     LeaveRequestsComponent,
     PatchEmployee,
