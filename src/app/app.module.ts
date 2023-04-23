@@ -28,6 +28,7 @@ import {TextFieldModule} from '@angular/cdk/text-field';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { FeedbackDialog } from './components/manager/performance-review/performance-review.component';
+import { GoalsAdminComponent } from './pages/admin/goals/goals.component';
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { HolidayLeavesComponent } from './leaves/holiday-leaves/holiday-leaves.component';
@@ -52,6 +53,7 @@ import { LeavesComponent } from './pages/admin/leaves/leaves.component';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
+  {path:"admin/goals", component:GoalsAdminComponent},
   {path:"home", component:HomeComponent},
   {path:"manager", component:ManagerComponent},
   {path:"admin", component:AdminComponent},
@@ -69,6 +71,7 @@ const route: Routes = [
     AdminComponent,
     LeaveRequestsComponent,
     PatchEmployee,
+    GoalsAdminComponent,
     LeaveApplyComponent,
     ProfileComponent,
     mComponent,
