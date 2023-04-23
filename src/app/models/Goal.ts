@@ -1,5 +1,6 @@
 export interface Goal {
     id ?: number,
+    employee?:string,
     name?:string,
     description?:string,
     deadline ?:Date,
@@ -7,4 +8,5 @@ export interface Goal {
     comments ?: string,
     status ?: string,
     personal ?: number
+    employeeId?:string
 }

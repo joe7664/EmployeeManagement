@@ -10,11 +10,20 @@ import { ManagerServiceService } from 'src/app/services/manager-service.service'
 })
 export class GoalsComponent {
   @Input() employees:Employee[]=[]
-  displayColumns = ['id', 'name', 'description', 'deadline', 'status', 'weightage', 'comment']
+  displayColumns = ['id', 'name', 'employee', 'description', 'deadline', 'status', 'weightage', 'comment']
   goals:Goal[] = []
   constructor(private managerService:ManagerServiceService){
+    
+  }
+  ngOnInit() {
     this.managerService.getEmployeeGoals().subscribe(data => {
-      this.goals = data;
+      for (let el of data) {
+        console.log("EL", el)
+        let employee = this.employees.find(employee => employee.id == el.employeeId) as unknown as Employee
+        console.log(employee)
+        el.employee = employee.firstName as unknown as string + " " + employee.lastName;
+      }
+      this.goals = data
     })
   }
 
