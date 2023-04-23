@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Goal } from 'src/app/models/Goal';
 import { Review } from 'src/app/models/Review';
 import { GoalsService } from 'src/app/services/goals.service';
@@ -12,14 +12,15 @@ import { ReviewService } from 'src/app/services/review.service';
 })
 export class ManagerGoalsComponent {
   displayColumns = ['name', 'description', 'deadline', 'status', 'weightage', 'comment', 'finish']
-  goals:Goal[] = [];
+  @Input() goals:Goal[] = [];
   employeeReview:Review = {
-    reviewNumber:0,
     deliverables:"",
     achievements:"",
     areaOfImprovement:"",
+    managerFeedback:"",
     score:0
   };
+  goalId:number=0;
   review=false;
   
   constructor(private goalService:GoalsService, private emp:LoginService, private reviewService:ReviewService){ }
@@ -31,15 +32,18 @@ export class ManagerGoalsComponent {
     
   }
   accept(id:number){
-    this.goalService.acceptGoal(id).subscribe(json => {console.log(json); this.ngOnInit();});
+    this.goalService.acceptGoal(id).subscribe(json => {console.log(json); this.ngOnInit(); console.log("Accepted goal: ",id)});
     
   }
   complete(id:number){
+    this.goalId=id;
     this.goalService.completeGoal(id).subscribe(json => {console.log(json); this.ngOnInit();});
     this.review=true;
   }
   submit(employeeReview:Review){
-    this.reviewService.submitEmployeeReview(employeeReview, this.emp.id).subscribe(json => console.log(json));
+    console.log("Goal ID: ", this.goalId)
+    console.log(employeeReview)
+    this.reviewService.submitEmployeeReview(employeeReview, this.goalId).subscribe(json => {console.log(json); console.log(this.goalId)});
     this.review=false;
   }
 }
