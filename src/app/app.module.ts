@@ -47,12 +47,14 @@ import { MeetingComponent } from './components/manager/meeting/meeting.component
 import { LeaveComponent } from './components/manager/leave/leave.component';
 import { EmployeesComponent } from './components/manager/employees/employees.component';
 import { PatchEmployee } from './pages/admin/admin.component';
+import { LeavesComponent } from './pages/admin/leaves/leaves.component';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
   {path:"home", component:HomeComponent},
   {path:"manager", component:ManagerComponent},
   {path:"admin", component:AdminComponent},
+  {path:"admin/leaves", component:LeavesComponent},
   {path:"**", component:HomeComponent}
 ]
 @NgModule({
@@ -82,6 +84,8 @@ const route: Routes = [
     MeetingComponent,
     LeaveComponent,
     EmployeesComponent,
+    PatchEmployee,
+    LeavesComponent,
   ],
   imports: [
     RouterModule.forRoot(route),

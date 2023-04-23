@@ -21,7 +21,7 @@ export class AdminService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post("http://localhost:9000/revWorkforce/employee/" + employee.id,employee,
+    return this.http.patch("http://localhost:9000/revWorkforce/employee/" + employee.id,employee,
         {headers: header})
   }
 }
