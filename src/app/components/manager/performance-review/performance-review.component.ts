@@ -64,7 +64,7 @@ export class FeedbackDialog {
       this.review.managerFeedback = this.tempFeedback;
       this.review.score = this.tempScore;
       console.log(data);
-
+      this.dialogRef.close()
     })
   }
   ngOnInit() {
