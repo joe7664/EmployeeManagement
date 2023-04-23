@@ -1,4 +1,4 @@
-<mat-tab-group >
+<mat-tab-group (selectedTabChange)="refresh($event)">
   <mat-tab  label="Meetings">
     <app-meeting ></app-meeting>
   </mat-tab>

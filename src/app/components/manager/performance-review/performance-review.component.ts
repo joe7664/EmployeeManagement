@@ -6,6 +6,7 @@ import { Review } from 'src/app/models/Review';
 import { ManagerServiceService } from 'src/app/services/manager-service.service';
 import { DialogData } from '../manager.component';
 import { GoalsService } from 'src/app/services/goals.service';
+import { ReviewService } from 'src/app/services/review.service';
 
 @Component({
   selector: 'app-performance-review',
@@ -50,10 +51,21 @@ export class FeedbackDialog {
   tempScore:number = 0
   errorMessage = ""
   constructor(public dialogRef: MatDialogRef<FeedbackDialog>, 
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private goalService:GoalsService) {
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private reviewService:ReviewService) {
       this.review = data.review;
   }
-  log() {
+  submit() {
+    let updatedReview: Review = {
+      "managerFeedback":this.tempFeedback, 
+      "score":this.tempScore, 
+      "reviewNumber":this.review.reviewNumber
+    }
+    this.reviewService.updateReview(updatedReview).subscribe(data => {
+      this.review.managerFeedback = this.tempFeedback;
+      this.review.score = this.tempScore;
+      console.log(data);
+
+    })
   }
   ngOnInit() {
     console.log(this.review);

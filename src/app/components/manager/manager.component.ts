@@ -31,6 +31,8 @@ export class ManagerComponent {
   }
   getEmployees(){
     this.managerService.getEmployees().subscribe(data => {
+      this.goals = []
+      this.reviews = []
       for (let el of data) {
         el.selected = false;
         for (let goal of el.goal as unknown as Goal[]) {
@@ -44,10 +46,14 @@ export class ManagerComponent {
         }
       }
       this.employees = data
-      console.log(data);
+      // console.log(data);
     })
-    console.log(this.reviews);
+    // console.log(this.reviews);
 
+  }
+  refresh(event:any) {
+    console.log("Refreshing Everything")
+    this.getEmployees();
   }
 
   
