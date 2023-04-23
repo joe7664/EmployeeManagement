@@ -50,6 +50,7 @@ import { LeaveComponent } from './components/manager/leave/leave.component';
 import { EmployeesComponent } from './components/manager/employees/employees.component';
 import { PatchEmployee } from './pages/admin/admin.component';
 import { LeavesComponent } from './pages/admin/leaves/leaves.component';
+import { ReviewsComponent } from './pages/admin/reviews/reviews.component';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
@@ -58,6 +59,7 @@ const route: Routes = [
   {path:"manager", component:ManagerComponent},
   {path:"admin", component:AdminComponent},
   {path:"admin/leaves", component:LeavesComponent},
+  {path:"admin/reviews", component:ReviewsComponent},
   {path:"**", component:HomeComponent}
 ]
 @NgModule({
@@ -91,6 +93,7 @@ const route: Routes = [
     EmployeesComponent,
     PatchEmployee,
     LeavesComponent,
+    ReviewsComponent,
   ],
   imports: [
     RouterModule.forRoot(route),
