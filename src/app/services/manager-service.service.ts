@@ -6,6 +6,7 @@ import { Goal } from '../models/Goal';
 import { Leave } from '../models/Leave';
 import { Review } from '../models/Review';
 import { LoginService } from './login.service';
+import { Meeting } from '../models/Meeting';
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,13 @@ export class ManagerServiceService {
     header.append("Access-Control-Allow-Origin", "*")
     return this.http.get<Review[]>("http://localhost:9000/performance/manager/" + this.loginService.id,
     {headers:header})
+  }
+  getMeetings() : Observable<Meeting[]> {
+    const header = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.get<Meeting[]>("http://localhost:9000/meetings/manager/" + this.loginService.id,
+    {headers:header})
+
   }
 }

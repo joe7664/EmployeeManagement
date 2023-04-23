@@ -45,7 +45,8 @@ import { PerformanceComponent } from './performance/performance.component';
 import { GoalsComponent } from './components/manager/goals/goals.component';
 import { EmployeeGoalsComponent as EmpGoals} from './pages/employee/emp-goals/emp-goals.component';
 import { ManagerGoalsComponent as ManGoals} from './pages/employee/man-goals/man-goals.component';
-import { MeetingComponent } from './components/manager/meeting/meeting.component';
+import { MeetingManagerComponent } from './components/manager/meeting/meeting.component';
+import { MeetingComponent } from './pages/employee/meeting/meeting.component';
 import { LeaveComponent } from './components/manager/leave/leave.component';
 import { EmployeesComponent } from './components/manager/employees/employees.component';
 import { PatchEmployee } from './pages/admin/admin.component';
@@ -70,9 +71,8 @@ const route: Routes = [
     EmployeeComponent,
     ManagerComponent,
     FeedbackDialog,
-    AdminComponent,
     LeaveRequestsComponent,
-    PatchEmployee,
+    MeetingManagerComponent,
     GoalsAdminComponent,
     LeaveApplyComponent,
     ProfileComponent,
@@ -105,8 +105,6 @@ const route: Routes = [
     FormsModule,
     BrowserModule,
     BrowserAnimationsModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     MatSlideToggleModule,
     MatDialogModule,
     MatTabsModule,
@@ -118,7 +116,6 @@ const route: Routes = [
     MatCardModule,
     MatDividerModule,
     MatNativeDateModule,
-    MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
     TextFieldModule,
