@@ -24,6 +24,13 @@ export class GoalsService {
     return this.http.get<Goal[]>("http://localhost:9000/goals/employee/"+id+"/1",
         {headers: header})
   }
+  getGoalsByManagerId(id:number) : Observable<Goal[]> {
+    const header = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.get<Goal[]>("http://localhost:9000/goals/manager/"+id,
+        {headers: header})
+  }
   acceptGoal(goalId:number){
     const header = new HttpHeaders();
     header.append("accept", "text/json");

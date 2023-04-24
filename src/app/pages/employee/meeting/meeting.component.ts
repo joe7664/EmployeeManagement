@@ -1,3 +1,4 @@
+import { Time } from '@angular/common';
 import { Component } from '@angular/core';
 import { Meeting } from 'src/app/models/Meeting';
 import { LoginService } from 'src/app/services/login.service';
@@ -10,22 +11,27 @@ import { MeetingService } from 'src/app/services/meeting.service';
 })
 export class MeetingComponent {
   date:Date = new Date();
-  endDate:Date = new Date();
+  sTime:Time = {hours:0, minutes:0};
+  eTime:Time = this.sTime;
+  min:string="09:00";
+  max:string="06:00";
   meeting:Meeting={
     subject:"",
-    startTime:"",
-    endTime:"",
-    description:""
+    startDate:"",
+    startTime:this.sTime,
+    endTime:this.eTime,
+    description:"",
+    employeeId:this.loginService.id
   };
   constructor(private loginService:LoginService, private meetingService:MeetingService){}
   ngOnInit() :void{
-    this.meeting.startTime=this.date.toISOString().substring(0, 10);
+    this.meeting.startDate=this.date.toISOString().substring(0, 10);
     console.log("full start date: ", this.meeting.startTime);
   }
   onChange(changes:any){
-    console.log("selection changes: ", changes);
-      this.endDate=new Date(this.date);
-      this.meeting.endTime=this.endDate.toISOString().substring(0, 10);
+    this.eTime.hours=this.meeting.startTime.hours+1;
+    this.eTime.minutes=this.meeting.startTime.minutes;
+    this.meeting.endTime=this.eTime;
   }
   submit(){
     console.log(this.meeting)

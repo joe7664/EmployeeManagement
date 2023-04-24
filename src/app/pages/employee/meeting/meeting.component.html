@@ -1,7 +1,8 @@
-<div style="align-content: center;">
-    <input [(ngModel)]="meeting.subject" type="text" placeholder="Subject"><br>
-    <input [(ngModel)]="meeting.startTime" type="date" placeholder="Start Time" [min]='this.date' (ngModelChange)="onChange($event)"><br>
-    <input [(ngModel)]="meeting.endTime" type="date" placeholder="Start Time" [min]='this.endDate'><br>
-    <input [(ngModel)]="meeting.description" type="text" placeholder="Description"><br>
-    <button (click)="submit()">Submit</button>
-</div>
+<form class="form">
+    <input [(ngModel)]="meeting.subject" type="text" name="sub" placeholder="Subject" required>
+    <input [(ngModel)]="meeting.startDate" type="date" name="date" placeholder="Date" [min]='date' required style=" max-width: 100px;">
+    <input [(ngModel)]="meeting.startTime" type="time" name="sTime" [min]="min" [max]="max" (ngModelChange)="onChange($event)" required style=" max-width: 100px;">
+    <input [(ngModel)]="meeting.endTime" type="time" name="eTime" [min]="min" [max]="max" required style=" max-width: 100px;">
+    <input [(ngModel)]="meeting.description" type="text" name="desc" placeholder="Description">
+    <button type="submit" [disabled]="!meeting.subject || !meeting.startDate || !meeting.startTime || !meeting.endTime" (click)="submit()" style=" max-width: 60px;">Submit</button>
+</form>

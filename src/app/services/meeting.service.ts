@@ -14,7 +14,6 @@ export class MeetingService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post("http://localhost:9000/meetings/employee/"+empId,
-        meeting, {responseType:"text"})
+    return this.http.post("http://localhost:9000/meetings/employee/"+empId, meeting, {responseType:"text"})
   }
 }
