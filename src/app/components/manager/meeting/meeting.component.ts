@@ -9,12 +9,18 @@ import { ManagerServiceService } from 'src/app/services/manager-service.service'
 })
 export class MeetingManagerComponent {
   meetings:Meeting[]=[]
-  displayColumns = ['id', 'subject', 'startTime','endTime', 'description']
+  displayColumns = ['id', 'day', 'subject', 'startTime','endTime', 'description']
   constructor(private managerServivice:ManagerServiceService) {
     managerServivice.getMeetings().subscribe(data => {
       this.meetings = data;
       console.log("MEETINGS", data)
     })
+  }
+  convertTime(time:string) {
+    let temp = new Date()
+    temp.setUTCHours(time.split(":")[0] as unknown as number)
+    temp.setUTCMinutes(time.split(":")[0] as unknown as number)
+    return temp;
   }
 
 }

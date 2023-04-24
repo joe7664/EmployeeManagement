@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
 import { OnChanges } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
@@ -111,6 +112,7 @@ const route: Routes = [
     CommonModule,
     FormsModule,
     BrowserModule,
+    DatePipe,
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatDialogModule,
