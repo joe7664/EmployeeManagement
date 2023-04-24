@@ -1,0 +1,9 @@
+<mat-card *ngFor="let el of notifications">
+    <mat-card-header>
+      <mat-card-title>{{el.message}}</mat-card-title>
+    </mat-card-header>
+    <mat-card-actions align="end">
+      <button mat-button (click)="deleteNot(el.id)">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+  <button (click)="log()"></button>
