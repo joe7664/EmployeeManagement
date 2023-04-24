@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { MatInputModule } from '@angular/material/input';
+import { OnChanges } from '@angular/core';
 
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { CommonModule } from '@angular/common';
@@ -53,6 +54,7 @@ import { PatchEmployee } from './pages/admin/admin.component';
 import { LeavesComponent } from './pages/admin/leaves/leaves.component';
 import { ReviewsComponent } from './pages/admin/reviews/reviews.component';
 import { MeetingRequest } from './components/manager/employees/employees.component';
+import { NotificationComponent } from './components/manager/notification/notification.component';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
@@ -96,6 +98,7 @@ const route: Routes = [
     PatchEmployee,
     LeavesComponent,
     ReviewsComponent,
+    NotificationComponent,
   ],
   imports: [
     RouterModule.forRoot(route),
