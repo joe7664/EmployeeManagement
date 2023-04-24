@@ -62,7 +62,12 @@ export class ManagerServiceService {
     return this.http.get<Meeting[]>("http://localhost:9000/meetings/manager/" + this.loginService.id,
     {headers:header})
   }
-  postMeeting(meeting:MeetingMan) : Observable<string> {
+  postMeeting(meeting:MeetingMan) :Observable<string>{
+    meeting.startDate = meeting.startTime?.split("T")[0]
+    meeting.startTime = meeting.startTime?.split("T")[1].split(".")[0]
+    meeting.endTime = meeting.endTime?.split("T")[1].split(".")[0]
+    console.log(meeting)
+
     return this.http.post("http://localhost:9000/meetings/employee/"+this.loginService.id, meeting, {responseType:"text"})
   }
   getNotifications() : Observable<Notification[]> {
