@@ -52,6 +52,7 @@ import { EmployeesComponent } from './components/manager/employees/employees.com
 import { PatchEmployee } from './pages/admin/admin.component';
 import { LeavesComponent } from './pages/admin/leaves/leaves.component';
 import { ReviewsComponent } from './pages/admin/reviews/reviews.component';
+import { MeetingRequest } from './components/manager/employees/employees.component';
 import { FeedbackComponent } from './pages/employee/feedback/feedback.component';
 
 const route: Routes = [
@@ -85,6 +86,7 @@ const route: Routes = [
     HolidayLeavesComponent,
     LeaveAction,
     PerformanceReviewComponent,
+    MeetingRequest,
     GoalsComponent,
     EmpGoals,
     AdminComponent,

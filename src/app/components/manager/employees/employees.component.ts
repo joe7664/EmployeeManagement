@@ -2,6 +2,8 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Employee } from 'src/app/models/Employee';
 import { Goal } from 'src/app/models/Goal';
+import { Meeting } from 'src/app/models/Meeting';
+import { MeetingMan } from 'src/app/models/MeetingMan';
 import { GoalsService } from 'src/app/services/goals.service';
 import { ManagerServiceService } from 'src/app/services/manager-service.service';
 import { DialogData } from '../manager.component';
@@ -28,11 +30,16 @@ export class EmployeesComponent {
     })
 
   }
-  getAvailability(employeeID:number) {
-    // this.managerService.getEmployeeLeave(employeeID).subscribe(data=> {
-    //   console.log("DATA", data)
-      // this.openDialog(data)
-    // })
+  getAvailability(employee:Employee) {
+    const dialogRef = this.dialog.open(MeetingRequest, {
+      data: {
+        employee:employee,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
   getSelected() {
     let temp : Employee[] = []
@@ -109,6 +116,58 @@ export class DialogContentExampleDialog {
   }
   ngOnInit() {
     console.log(this.employees);
+  }
+  closeDialog() {
+    this.dialogRef.close()
+  }
+}
+
+let meetingTemplate:MeetingMan = {
+  "description":"",
+  "startTime":"",
+  "endTime":"",
+  "subject":"",
+  "employeeId":0,
+}
+@Component({
+  selector: 'meeting-request',
+  templateUrl: 'meetingRequest.component.html',
+})
+export class MeetingRequest {
+  employee:Employee;
+  meeting:MeetingMan;
+  startTime:string;
+  endTime:string;
+  day:Date;
+  errorMessage:string
+  constructor(public dialogRef: MatDialogRef<DialogContentExampleDialog>, 
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private managerService:ManagerServiceService) {
+    this.employee = this.data.employee
+    this.meeting = meetingTemplate;
+    this.meeting.employeeId = this.employee.id
+    this.startTime = "12:00"
+    this.endTime = "13:00"
+    this.day = new Date();
+    this.errorMessage = ""
+  }
+  log() {
+    console.log(this.startTime.split(":")[0])
+  }
+  submit() {
+    let start = new Date(this.day);
+    let end = new Date(this.day)
+    start.setHours(this.startTime.split(":")[0] as unknown as number)
+    start.setMinutes(this.startTime.split(":")[1] as unknown as number)
+    end.setHours(this.endTime.split(":")[0] as unknown as number)
+    end.setMinutes(this.endTime.split(":")[1] as unknown as number)
+    this.meeting.startTime = start.toISOString();
+    this.meeting.endTime = end.toISOString();
+    this.managerService.postMeeting(this.meeting).subscribe(data => {
+      console.log(data);
+    })
+  }
+  ngOnInit() {
+    console.log(this.employee);
   }
   closeDialog() {
     this.dialogRef.close()

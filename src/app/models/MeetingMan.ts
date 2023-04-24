@@ -1,5 +1,5 @@
-export interface Meeting {
-    subject?:number,
+export interface MeetingMan {
+    subject?:string,
     startTime?:string,
     endTime?:string,
     description?:string,
