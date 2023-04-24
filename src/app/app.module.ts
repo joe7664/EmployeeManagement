@@ -52,6 +52,8 @@ import { EmployeesComponent } from './components/manager/employees/employees.com
 import { PatchEmployee } from './pages/admin/admin.component';
 import { LeavesComponent } from './pages/admin/leaves/leaves.component';
 import { ReviewsComponent } from './pages/admin/reviews/reviews.component';
+import { FeedbackComponent } from './pages/employee/feedback/feedback.component';
+
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
@@ -94,6 +96,7 @@ const route: Routes = [
     PatchEmployee,
     LeavesComponent,
     ReviewsComponent,
+    FeedbackComponent,
   ],
   imports: [
     RouterModule.forRoot(route),

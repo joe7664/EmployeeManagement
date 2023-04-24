@@ -1,1 +1,5 @@
-<p>meeting works!</p>
+<input [(ngModel)]="meeting.subject" type="text" placeholder="Subject" [min]='date' (ngModelChange)="onChange($event)"><br>
+<input [(ngModel)]="meeting.startTime" type="date" placeholder="Start Time" [min]="meeting.startTime"><br>
+<input [(ngModel)]="meeting.endTime" type="date" placeholder="Start Time"><br>
+<input [(ngModel)]="meeting.description" type="text" placeholder="Description"><br>
+<button (click)="submit()">Submit</button>
