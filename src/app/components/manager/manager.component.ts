@@ -4,6 +4,7 @@ import { Employee } from 'src/app/models/Employee';
 import { Goal } from 'src/app/models/Goal';
 import { Leave } from 'src/app/models/Leave';
 import { Meeting } from 'src/app/models/Meeting';
+import { Notification } from 'src/app/models/Notification';
 import { Review } from 'src/app/models/Review';
 import { GoalsService } from 'src/app/services/goals.service';
 import { LeaveService } from 'src/app/services/leaves.service';
@@ -27,9 +28,13 @@ export class ManagerComponent {
   goals: Goal[] = []
   reviews:Review[] = []
   meetings:Meeting[] = []
+  notifications:Notification[] = []
+  leaves:Leave[] = []
 
   constructor(private managerService:ManagerServiceService, public dialog: MatDialog, private leaveService : LeaveService){
     this.getEmployees();
+    this.getNotifications();
+    this.getLeaves();
   }
   getEmployees(){
     this.managerService.getEmployees().subscribe(data => {
@@ -51,12 +56,22 @@ export class ManagerComponent {
       this.employees = data
       // console.log(data);
     })
-    // console.log(this.reviews);
-
+  }
+  getNotifications() {
+    this.managerService.getNotifications().subscribe(data => {
+      this.notifications = data
+    })
+  }
+  getLeaves() {
+    this.managerService.getLeaveRequests().subscribe(data => {
+      this.leaves = data;
+    })
   }
   refresh(event:any) {
     console.log("Refreshing Everything")
     this.getEmployees();
+    this.getNotifications();
+    this.getLeaves();
   }
 
   

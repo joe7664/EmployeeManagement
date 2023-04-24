@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Leave } from 'src/app/models/Leave';
 import { LeaveService } from 'src/app/services/leaves.service';
@@ -10,10 +10,10 @@ import { DialogData } from '../manager.component';
   templateUrl: './leave.component.html',
   styleUrls: ['./leave.component.css']
 })
-export class LeaveComponent {
+export class LeaveComponent implements OnChanges {
 
   searchName:string = ""
-  fullLeaves:Leave[] = []
+  @Input() fullLeaves:Leave[] = []
   leaves:Leave[] = []
   leaveColumns = ['name', 'startDate', 'endDate', 'status', 'notes','feedback', 'action']
   constructor(public dialog: MatDialog, private managerService:ManagerServiceService){}
@@ -28,7 +28,22 @@ export class LeaveComponent {
     })
     this.leaves = x
   }
-
+  ngOnChanges(changes: SimpleChanges) {      
+    let temp : Leave[]= []
+    this.fullLeaves.map((el) => {
+      if (el.status == "Submitted") {
+        temp.push(el)
+      };
+    })
+    for (let el of this.fullLeaves) {
+      if (el.status !== "Submitted") {
+         temp.push(el);
+      }
+    }
+    this.leaves = temp
+    this.fullLeaves = temp;
+    console.log(this.leaves)
+  }
   openLeaveAction(element:Leave) {
     const dialogRef = this.dialog.open(LeaveAction, {
       data: {
@@ -42,22 +57,22 @@ export class LeaveComponent {
     });
   }
   ngOnInit() {
-    this.managerService.getLeaveRequests().subscribe(json => {
-      let temp : Leave[]= []
-      json.map((el) => {
-        if (el.status == "Submitted") {
-          temp.push(el)
-        };
-      })
-      for (let el of json) {
-        if (el.status !== "Submitted") {
-           temp.push(el);
-        }
-      }
-      this.leaves = temp
-      this.fullLeaves = temp;
-      console.log(this.leaves)
-    })
+    // this.managerService.getLeaveRequests().subscribe(json => {
+      // let temp : Leave[]= []
+      // this.fullLeaves.map((el) => {
+      //   if (el.status == "Submitted") {
+      //     temp.push(el)
+      //   };
+      // })
+      // for (let el of this.fullLeaves) {
+      //   if (el.status !== "Submitted") {
+      //      temp.push(el);
+      //   }
+      // }
+      // this.leaves = temp
+      // this.fullLeaves = temp;
+      // console.log(this.leaves)
+    // })
   }
 
 }

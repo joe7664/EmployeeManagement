@@ -8,6 +8,7 @@ import { Review } from '../models/Review';
 import { LoginService } from './login.service';
 import { Meeting } from '../models/Meeting';
 import { MeetingMan } from '../models/MeetingMan';
+import { Notification } from '../models/Notification';
 
 @Injectable({
   providedIn: 'root'
@@ -63,5 +64,14 @@ export class ManagerServiceService {
   }
   postMeeting(meeting:MeetingMan) : Observable<string> {
     return this.http.post("http://localhost:9000/meetings/employee/"+this.loginService.id, meeting, {responseType:"text"})
+  }
+  getNotifications() : Observable<Notification[]> {
+    const header = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.get<Notification[]>("http://localhost:9000/notifications/manager/" + this.loginService.id, {headers:header})
+  }
+  deleteNotification(id:number) : Observable<string> {
+    return this.http.delete("http://localhost:9000/notifications/"+id, {responseType:"text"})
   }
 }

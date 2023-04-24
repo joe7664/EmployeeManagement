@@ -8,10 +8,13 @@
   <mat-tab label="Performance Review">
     <app-performance-review [reviews]="reviews"></app-performance-review>
   </mat-tab>
-    <mat-tab label="Leave Requests">
-       <app-leave></app-leave>
-        </mat-tab>
-    <mat-tab label="Employees">
-        <app-employees></app-employees>
-    </mat-tab>
+  <mat-tab label="Leave Requests">
+      <app-leave [fullLeaves]="leaves"></app-leave>
+      </mat-tab>
+  <mat-tab label="Employees">
+      <app-employees></app-employees>
+  </mat-tab>
+  <mat-tab label="Notifications">
+    <app-notification [notifications]="notifications"></app-notification>
+  </mat-tab>
   </mat-tab-group>
