@@ -154,8 +154,10 @@ export class MeetingRequest {
     console.log(this.startTime.split(":")[0])
   }
   submit() {
+    this.day.setMinutes(0)
     let start = new Date(this.day);
     let end = new Date(this.day)
+    console.log(start.toISOString());
     start.setHours(this.startTime.split(":")[0] as unknown as number)
     start.setMinutes(this.startTime.split(":")[1] as unknown as number)
     end.setHours(this.endTime.split(":")[0] as unknown as number)

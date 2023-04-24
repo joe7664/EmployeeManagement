@@ -4,6 +4,7 @@ import { Employee } from 'src/app/models/Employee';
 import { Goal } from 'src/app/models/Goal';
 import { Leave } from 'src/app/models/Leave';
 import { Meeting } from 'src/app/models/Meeting';
+import { MeetingMan } from 'src/app/models/MeetingMan';
 import { Notification } from 'src/app/models/Notification';
 import { Review } from 'src/app/models/Review';
 import { GoalsService } from 'src/app/services/goals.service';
@@ -27,7 +28,7 @@ export class ManagerComponent {
   employees:Employee[] = []
   goals: Goal[] = []
   reviews:Review[] = []
-  meetings:Meeting[] = []
+  meetings:MeetingMan[] = []
   notifications:Notification[] = []
   leaves:Leave[] = []
 
@@ -35,6 +36,7 @@ export class ManagerComponent {
     this.getEmployees();
     this.getNotifications();
     this.getLeaves();
+    this.getMeetings();
   }
   getEmployees(){
     this.managerService.getEmployees().subscribe(data => {
@@ -62,6 +64,11 @@ export class ManagerComponent {
       this.notifications = data
     })
   }
+  getMeetings() {
+    this.managerService.getMeetings().subscribe(data => {
+      this.meetings = data;
+    })
+  }
   getLeaves() {
     this.managerService.getLeaveRequests().subscribe(data => {
       this.leaves = data;
@@ -72,6 +79,7 @@ export class ManagerComponent {
     this.getEmployees();
     this.getNotifications();
     this.getLeaves();
+    this.getMeetings()
   }
 
   
