@@ -3,6 +3,16 @@ import { Employee } from 'src/app/models/Employee';
 import { Goal } from 'src/app/models/Goal';
 import { ManagerServiceService } from 'src/app/services/manager-service.service';
 
+let goalTemplate:Goal = {
+  "id":1,
+  "name":"example",
+  "description":"Example",
+  "deadline":new Date(),
+  "status":"Pending",
+  "weightage":100,
+  "comments":"Example"
+
+}
 @Component({
   selector: 'app-goals',
   templateUrl: './goals.component.html',
@@ -13,7 +23,7 @@ export class GoalsComponent {
   displayColumns = ['id', 'name', 'employee', 'description', 'deadline', 'status', 'weightage', 'comment']
   @Input() goals:Goal[] = []
   constructor(private managerService:ManagerServiceService){
-    
+    this.goals = [goalTemplate];
   }
   isEmpty(list : Goal[]) {
     if (list.length == 0) return false;

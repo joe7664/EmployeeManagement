@@ -7,6 +7,7 @@ import { Leave } from '../models/Leave';
 import { Review } from '../models/Review';
 import { LoginService } from './login.service';
 import { Meeting } from '../models/Meeting';
+import { MeetingMan } from '../models/MeetingMan';
 
 @Injectable({
   providedIn: 'root'
@@ -59,6 +60,8 @@ export class ManagerServiceService {
     header.append("Access-Control-Allow-Origin", "*")
     return this.http.get<Meeting[]>("http://localhost:9000/meetings/manager/" + this.loginService.id,
     {headers:header})
-
+  }
+  postMeeting(meeting:MeetingMan) : Observable<string> {
+    return this.http.post("http://localhost:9000/meetings/employee/"+this.loginService.id, meeting, {responseType:"text"})
   }
 }
