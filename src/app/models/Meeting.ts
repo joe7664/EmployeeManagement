@@ -1,7 +1,7 @@
 export interface Meeting {
-    subject?:string,
-    startTime?:Date,
-    endTime?:Date,
+    subject?:number,
+    startTime?:string,
+    endTime?:string,
     description?:string,
     employeeId?:number,
 }

@@ -55,6 +55,7 @@ import { LeavesComponent } from './pages/admin/leaves/leaves.component';
 import { ReviewsComponent } from './pages/admin/reviews/reviews.component';
 import { MeetingRequest } from './components/manager/employees/employees.component';
 import { NotificationComponent } from './components/manager/notification/notification.component';
+import { FeedbackComponent } from './pages/employee/feedback/feedback.component';
 const route: Routes = [
   {path:"", redirectTo: '/home', pathMatch:'full'},
   {path:"login", component:LoginComponent},
@@ -99,6 +100,7 @@ const route: Routes = [
     LeavesComponent,
     ReviewsComponent,
     NotificationComponent,
+    FeedbackComponent,
   ],
   imports: [
     RouterModule.forRoot(route),
