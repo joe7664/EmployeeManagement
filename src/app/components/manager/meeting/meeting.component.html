@@ -4,13 +4,17 @@
         <th mat-header-cell *matHeaderCellDef>ID </th>
         <td mat-cell *matCellDef="let element"> {{element.id}} </td>
     </ng-container>
+    <ng-container matColumnDef="day">
+        <th mat-header-cell *matHeaderCellDef>Day</th>
+        <td mat-cell *matCellDef="let element"> {{element.startDate | date:'mediumDate'}}</td>
+    </ng-container>
     <ng-container matColumnDef="startTime">
         <th mat-header-cell *matHeaderCellDef>Start Time </th>
-        <td mat-cell *matCellDef="let element"> {{element.startTime}}</td>
+        <td mat-cell *matCellDef="let element"> {{convertTime(element.startTime) | date:'shortTime'}}</td>
     </ng-container>
     <ng-container matColumnDef="endTime">
         <th mat-header-cell *matHeaderCellDef> End Time</th>
-        <td mat-cell *matCellDef="let element"> {{element.endTime}}</td>
+        <td mat-cell *matCellDef="let element"> {{convertTime(element.endTime) | date:'shortTime'}}</td>
     </ng-container>
     <ng-container matColumnDef="subject">
         <th mat-header-cell *matHeaderCellDef> Subject</th>

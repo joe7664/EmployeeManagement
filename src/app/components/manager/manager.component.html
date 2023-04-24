@@ -1,6 +1,6 @@
 <mat-tab-group (selectedTabChange)="refresh($event)">
   <mat-tab  label="Meetings">
-    <app-manager-meeting ></app-manager-meeting>
+    <app-manager-meeting [meetings]="meetings"></app-manager-meeting>
   </mat-tab>
   <mat-tab label="Goals">
     <app-goals [goals]="goals"></app-goals>
