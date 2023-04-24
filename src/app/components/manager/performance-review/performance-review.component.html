@@ -1,4 +1,4 @@
-<table *ngIf="isNotEmpty()" mat-table [dataSource]="reviews" class="mat-elevation-z8">
+<table  mat-table [dataSource]="reviews" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Employee </th>
         <td mat-cell *matCellDef="let element"> {{element.name}} </td>
