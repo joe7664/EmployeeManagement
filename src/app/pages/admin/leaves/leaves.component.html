@@ -1,3 +1,6 @@
+<mat-card>
+    
+    <h1 style="text-align:center; margin-top:20px ">{{employee.firstName}}'s Leaves</h1>
 <table mat-table [dataSource]="leaves" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef>Name </th>
@@ -34,3 +37,5 @@
     <tr mat-header-row *matHeaderRowDef="leaveColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: leaveColumns;"></tr>
     </table>
+
+</mat-card>

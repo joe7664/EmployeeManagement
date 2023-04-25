@@ -1,9 +1,7 @@
 <mat-toolbar style="display:flex;justify-content: space-between;">
     <span routerLink="/admin">RevWorkforce</span>
     <div style="display:flex;flex-direction: row; align-items: center;">
-        <button routerLink="/admin/leaves">Leaves</button>
-        <button routerLink="/admin/goals">Goals</button>
-        <button routerLink="/admin/reviews">Reviews</button>
+      <button mat-raised-button (click)="showRegister()">New User</button>
     </div>
 </mat-toolbar>
        
@@ -32,12 +30,12 @@
           <td mat-cell *matCellDef="let element"> {{element.leaveBalance}} </td>
         </ng-container>
         <ng-container matColumnDef="Leaves">
-          <th mat-header-cell *matHeaderCellDef> Leave</th>
-          <td mat-cell *matCellDef="let element"> <button (click)="showLeave(element)">Leave</button></td>
+          <th mat-header-cell *matHeaderCellDef> </th>
+          <td mat-cell *matCellDef="let element"> <button mat-button (click)="showLeave(element)">Leaves</button></td>
         </ng-container>
         <ng-container matColumnDef="Goals">
-          <th mat-header-cell *matHeaderCellDef> Goals </th>
-          <td mat-cell *matCellDef="let element"> <button (click)="showGoal(element)">Goals</button> </td>
+          <th mat-header-cell *matHeaderCellDef>  </th>
+          <td mat-cell *matCellDef="let element"> <button mat-button (click)="showGoal(element)">Goals</button> </td>
         </ng-container>
         <ng-container matColumnDef="Availability">
             <th mat-header-cell *matHeaderCellDef>  </th>
@@ -50,7 +48,7 @@
 
 <div [ngSwitch]="show.value">
   <app-admin-goals *ngSwitchCase="'goal'" [goals]="goals" [employee]="employee"></app-admin-goals>
-  <app-admin-leaves *ngSwitchCase="'leave'" [leaves]="leaves"></app-admin-leaves>
+  <app-admin-leaves *ngSwitchCase="'leave'" [leaves]="leaves" [employee]="employee"></app-admin-leaves>
   <div id="register" *ngSwitchCase="'register'" style="margin-top:20px">
     <mat-card style="width:90%; margin: auto; padding: 10px 0;">
       <h2 style="text-align: center; margin-bottom:0">Register New Employee</h2>

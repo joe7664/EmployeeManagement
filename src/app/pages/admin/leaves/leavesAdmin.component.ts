@@ -12,6 +12,7 @@ import { Employee } from 'src/app/models/Employee';
 })
 export class LeavesAdminComponent implements OnChanges{
   @Input() leaves:Leave[] = []
+  @Input() employee:Employee = {}
   leaveColumns = ['name', 'startDate', 'endDate', 'status', 'notes','feedback', ]
   constructor(private adminService: AdminService, private leaveService:LeaveService) {
   }

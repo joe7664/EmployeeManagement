@@ -69,12 +69,21 @@ export class AdminComponent {
   patch(emp:Employee) {
     
   }
+  showRegister() {
+    this.show.value = "register"
+  }
   showLeave(emp:Employee) {
-    this.leaveService.viewLeaves(emp.id as unknown as number).subscribe(data => {
+    this.leaveService.viewLeaves(emp.id as unknown as number).subscribe((data) => {
       this.employee = emp
       this.leaves = data;
       this.show.value = "leave";
-    })
+    }, (error) => {
+      console.log(error)
+      this.employee = emp
+      this.leaves = [];
+      this.show.value = "leave";
+      
+    } )
   }
   toggleRow(element: Goal) {
     this.expandedElement = element
