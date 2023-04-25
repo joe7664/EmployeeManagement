@@ -28,7 +28,7 @@ export class ProfileComponent {
   };
   constructor(private profile : ProfileService, private emp : LoginService){ }
   ngOnInit(): void{
-    this.profile.retrieveInfo(this.emp.id).subscribe(json => this.employee = json);
+    this.profile.retrieveInfo().subscribe(json => this.employee = json);
   }
   updateInfo(){
     if(this.update.email == '') this.update.email=this.employee.email;

@@ -11,8 +11,17 @@
         <th mat-header-cell *matHeaderCellDef> Deadline</th>
         <td mat-cell *matCellDef="let element"> {{element.deadline | dateFormatter}}</td>
     </ng-container>
+    <ng-container matColumnDef="comments">
+        <th mat-header-cell *matHeaderCellDef> Suggestions </th>
+        <td mat-cell *matCellDef="let element"> 
+            {{element.comments}} 
+            <input [(ngModel)]="element.tempComment" placeholder="Add suggestions">
+            <button type="submit" (click)="submit(element.id, element.tempComment)">Submit</button>
+        </td>
+    </ng-container>
     
     <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
 
 </table>
+

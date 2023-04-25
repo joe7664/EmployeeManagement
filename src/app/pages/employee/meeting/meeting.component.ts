@@ -1,6 +1,5 @@
-import { Time } from '@angular/common';
 import { Component } from '@angular/core';
-import { Meeting } from 'src/app/models/Meeting';
+import { MeetingMan } from 'src/app/models/MeetingMan';
 import { LoginService } from 'src/app/services/login.service';
 import { MeetingService } from 'src/app/services/meeting.service';
 
@@ -10,31 +9,37 @@ import { MeetingService } from 'src/app/services/meeting.service';
   styleUrls: ['./meeting.component.css']
 })
 export class MeetingComponent {
-  date:Date = new Date();
-  sTime:Time = {hours:0, minutes:0};
-  eTime:Time = this.sTime;
-  min:string="09:00";
-  max:string="06:00";
-  meeting:Meeting={
+  date:Date;
+  startTime:string="12:00";
+  endTime:string="13:00";
+  meeting:MeetingMan={
     subject:"",
     startDate:"",
-    startTime:this.sTime,
-    endTime:this.eTime,
+    startTime:"",
+    endTime:"",
     description:"",
     employeeId:this.loginService.id
   };
-  constructor(private loginService:LoginService, private meetingService:MeetingService){}
-  ngOnInit() :void{
-    this.meeting.startDate=this.date.toISOString().substring(0, 10);
-    console.log("full start date: ", this.meeting.startTime);
+  constructor(private loginService:LoginService, private meetingService:MeetingService){
+    this.date=new Date();
   }
-  onChange(changes:any){
-    this.eTime.hours=this.meeting.startTime.hours+1;
-    this.eTime.minutes=this.meeting.startTime.minutes;
-    this.meeting.endTime=this.eTime;
+  ngOnInit() :void{
+    this.date = new Date();
+    this.meeting.startDate=this.date.toISOString().substring(0, 10);
+    console.log("full start date: ", this.meeting.startDate);
   }
   submit(){
+    this.date.setMinutes(0)
+    let start = new Date(this.date);
+    let end = new Date(this.date)
+    console.log(start.toISOString());
+    start.setHours(this.startTime.split(":")[0] as unknown as number)
+    start.setMinutes(this.startTime.split(":")[1] as unknown as number)
+    end.setHours(this.endTime.split(":")[0] as unknown as number)
+    end.setMinutes(this.endTime.split(":")[1] as unknown as number)
+    this.meeting.startTime = start.toISOString();
+    this.meeting.endTime = end.toISOString();
     console.log(this.meeting)
-    this.meetingService.requestMeeting(this.meeting, this.loginService.id).subscribe(json => console.log(json));
+    this.meetingService.requestMeeting(this.meeting).subscribe(json => console.log(json));
   }
 }
