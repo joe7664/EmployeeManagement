@@ -34,7 +34,13 @@ export class LoginComponent {
         this.loginMessage = error.error
       })
     } else if (this.type=="admin") {
-      console.log("We have not implemented an Admin Login feature yet")
+      this.loginService.loginAdmin({"username": this.username, "password": this.password}).subscribe(
+      data => { console.log(data)
+        this.router.navigate(['/admin']);} , error => {
+          this.loginMessage = error.error})
+        
+        
+      console.log("admin loged in")
     } else {
       console.log("How did you get here???")
     }
