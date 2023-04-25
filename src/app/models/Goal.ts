@@ -12,5 +12,5 @@ export interface Goal {
     status ?: string,
     personal ?: number
     employeeId?:string,
-    performanceReviews?:Review[]
+    performanceReviews?:Review
 }
