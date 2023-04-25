@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Meeting } from 'src/app/models/Meeting';
+import { MeetingMan } from 'src/app/models/MeetingMan';
 import { ManagerServiceService } from 'src/app/services/manager-service.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { ManagerServiceService } from 'src/app/services/manager-service.service'
   styleUrls: ['./meeting.component.css']
 })
 export class MeetingManagerComponent {
-  @Input() meetings:Meeting[]=[]
+  @Input() meetings:MeetingMan[]=[]
   displayColumns = ['id', 'day', 'subject', 'startTime','endTime', 'description']
   constructor(private managerServivice:ManagerServiceService) {
     // managerServivice.getMeetings().subscribe(data => {
