@@ -55,11 +55,11 @@ export class ManagerServiceService {
     return this.http.get<Review[]>("http://localhost:9000/performance/manager/" + this.loginService.id,
     {headers:header})
   }
-  getMeetings() : Observable<Meeting[]> {
+  getMeetings() : Observable<MeetingMan[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Meeting[]>("http://localhost:9000/meetings/manager/" + this.loginService.id,
+    return this.http.get<MeetingMan[]>("http://localhost:9000/meetings/manager/" + this.loginService.id,
     {headers:header})
   }
   postMeeting(meeting:MeetingMan) :Observable<string>{

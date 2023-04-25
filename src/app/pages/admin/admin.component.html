@@ -49,7 +49,7 @@
       </table>
 
 <div [ngSwitch]="show.value">
-  <app-admin-goals *ngSwitchCase="'goal'" [goals]="goals"></app-admin-goals>
+  <app-admin-goals *ngSwitchCase="'goal'" [goals]="goals" [employee]="employee"></app-admin-goals>
   <app-admin-leaves *ngSwitchCase="'leave'" [leaves]="leaves"></app-admin-leaves>
   <div id="register" *ngSwitchCase="'register'" style="margin-top:20px">
     <mat-card style="width:90%; margin: auto; padding: 10px 0;">
