@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DialogData } from 'src/app/components/manager/manager.component';
 import { Employee } from 'src/app/models/Employee';
 import { AdminService } from 'src/app/services/admin.service';
@@ -21,10 +22,22 @@ export class AdminComponent {
   message:string="";
   isManager:string="";
   employees:Employee[] = []
-  constructor(private loginService:LoginService, private adminService:AdminService,public dialog: MatDialog,){}
+
+  isAdmin: boolean = false;
+  constructor(private loginService:LoginService, private adminService:AdminService,public dialog: MatDialog,
+    private route: Router){
+      if(this.loginService.isAdmin !==1){
+        this.route.navigate(['/login'])
+      }
+      if(this.loginService.adminId ==1)
+        this.isAdmin = true;
+    } 
 
   regPassword:string="";
   displayedColumns: string[] = ['ID', 'Name', 'Leave', 'Email', 'Availability'];
+
+
+
   register() {
     this.loginService.register({
       email:this.email, 
@@ -71,6 +84,8 @@ export class AdminComponent {
 export class PatchEmployee {
   employee:Employee = {}
   
+  
+
   constructor(public dialogRef: MatDialogRef<PatchEmployee>, 
     @Inject(MAT_DIALOG_DATA) public data: DialogData, private adminService:AdminService) {
       this.employee = data.employee

@@ -36,11 +36,14 @@ export class LoginComponent {
     } else if (this.type=="admin") {
       this.loginService.loginAdmin({"username": this.username, "password": this.password}).subscribe(
       data => { console.log(data)
-        this.router.navigate(['/admin']);} , error => {
+        this.loginService.id = data.adminId as unknown as number;
+        this.loginService.isAdmin = data.isAdmin as unknown as number;
+        localStorage.setItem("adminId", data.adminId as unknown as string)
+        localStorage.setItem("isAdmin", data.isAdmin == 1 ? "1" : "0")
+        this.router.navigate(['/admin']);
+        console.log("admin loged in")
+      }, error => {
           this.loginMessage = error.error})
-        
-        
-      console.log("admin loged in")
     } else {
       console.log("How did you get here???")
     }
