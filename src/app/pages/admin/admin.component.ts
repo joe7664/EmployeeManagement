@@ -74,6 +74,7 @@ export class AdminComponent {
   }
   showLeave(emp:Employee) {
     this.leaveService.viewLeaves(emp.id as unknown as number).subscribe((data) => {
+      console.log(data);
       this.employee = emp
       this.leaves = data;
       this.show.value = "leave";

@@ -55,4 +55,13 @@ export class AdminService {
     header.append("Access-Control-Allow-Origin", "*")
     return this.http.get<Goal[]>("http://localhost:9000/goals/" +emp.id,{headers: header})
   }
+  updateLeave(leave:Leave) : string{
+    return 'Update type has not been implement';
+  }
+  deleteLeave(leave:Leave) {
+    const header = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.delete("http://localhost:9000/leaves/" + leave.id, {headers:header})
+  }
 }
