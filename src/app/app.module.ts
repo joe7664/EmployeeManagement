@@ -31,6 +31,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import { FeedbackDialog } from './components/manager/performance-review/performance-review.component';
 import { GoalsAdminComponent } from './pages/admin/goals/goals.component';
+import { LeavesAdminComponent } from './pages/admin/leaves/leavesAdmin.component';
 
 import { ProfileComponent } from './components/profile/profile.component';
 import { HolidayLeavesComponent } from './leaves/holiday-leaves/holiday-leaves.component';
@@ -52,7 +53,6 @@ import { MeetingComponent } from './pages/employee/meeting/meeting.component';
 import { LeaveComponent } from './components/manager/leave/leave.component';
 import { EmployeesComponent } from './components/manager/employees/employees.component';
 import { PatchEmployee } from './pages/admin/admin.component';
-import { LeavesComponent } from './pages/admin/leaves/leaves.component';
 import { ReviewsComponent } from './pages/admin/reviews/reviews.component';
 import { MeetingRequest } from './components/manager/employees/employees.component';
 import { NotificationComponent } from './components/manager/notification/notification.component';
@@ -64,7 +64,7 @@ const route: Routes = [
   {path:"home", component:HomeComponent},
   {path:"manager", component:ManagerComponent},
   {path:"admin", component:AdminComponent},
-  {path:"admin/leaves", component:LeavesComponent},
+  {path:"admin/leaves", component:LeavesAdminComponent},
   {path:"admin/reviews", component:ReviewsComponent},
   {path:"**", component:HomeComponent}
 ]
@@ -72,6 +72,8 @@ const route: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
+    LeaveComponent,
+    LeavesAdminComponent,
     HomeComponent,
     EmployeeComponent,
     ManagerComponent,
@@ -98,7 +100,6 @@ const route: Routes = [
     LeaveComponent,
     EmployeesComponent,
     PatchEmployee,
-    LeavesComponent,
     ReviewsComponent,
     NotificationComponent,
     FeedbackComponent,

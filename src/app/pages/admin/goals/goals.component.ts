@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Goal } from 'src/app/models/Goal';
 import { AdminService } from 'src/app/services/admin.service';
 
@@ -9,11 +9,11 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class GoalsAdminComponent {
   displayColumns = ['id', 'name', 'description', 'deadline', 'status', 'weightage', 'comment']
-  goals:Goal[] = []
+  @Input() goals:Goal[] = []
   constructor(private adminService:AdminService) {
-    this.adminService.getGoals().subscribe(data => {
-      this.goals = data;
-      console.log(data);
-    })
+    // this.adminService.getGoals().subscribe(data => {
+    //   this.goals = data;
+    //   console.log(data);
+    // })
   }
 }
