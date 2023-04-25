@@ -4,5 +4,5 @@ export interface MeetingMan {
     endTime?:string,
     description?:string,
     employeeId?:number,
-    startDate?:string
+    startDate?:string,
 }
