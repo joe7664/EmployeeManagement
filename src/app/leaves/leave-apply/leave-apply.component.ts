@@ -24,15 +24,14 @@ export class LeaveApplyComponent {
   };
   employee: Employee = {
     leaveBalance:0,
-    id:this.loginService.id
   };
 
-  constructor(private leaveService: LeaveService, private loginService: LoginService, private profileService: ProfileService){
+  constructor(private leaveService: LeaveService, private profileService: ProfileService){
     
   }
 
   ngOnInit() :void{
-    this.profileService.retrieveInfo(this.loginService.id).subscribe(json => this.employee = json);
+    this.profileService.retrieveInfo().subscribe(json => this.employee = json);
     this.date.setDate(this.date.getDate()+1);
     this.tomorrow=this.date.toISOString().substring(0, 10);
     this.leave.startDate=this.date;
@@ -51,6 +50,6 @@ export class LeaveApplyComponent {
   }
   submit(){
     console.log(this.employee.leaveBalance);
-    this.leaveService.leaveRequest(this.leave, this.loginService.id).subscribe(json => console.log(json));
+    this.leaveService.leaveRequest(this.leave).subscribe(json => console.log(json));
   }
 }

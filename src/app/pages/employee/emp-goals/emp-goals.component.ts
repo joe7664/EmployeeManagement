@@ -12,8 +12,8 @@ export class EmployeeGoalsComponent {
   displayColumns = ['name', 'description', 'deadline', 'status', 'weightage']
   goals:Goal[] = [];
   
-  constructor(private goalService:GoalsService, private emp:LoginService){
-    this.goalService.getEmployeeGoals(this.emp.id).subscribe(json => this.goals = json);
+  constructor(private goalService:GoalsService){
+    this.goalService.getEmployeeGoals().subscribe(json => this.goals = json);
   }
 
 }

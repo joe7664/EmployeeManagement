@@ -14,7 +14,7 @@ export class PerformanceComponent {
   
   constructor(private reviewService:ReviewService, private emp:LoginService){ }
   ngOnInit(){
-    this.reviewService.viewEmployeeReviews(this.emp.id).subscribe(json => this.reviews = json);
+    this.reviewService.viewEmployeeReviews().subscribe(json => this.reviews = json);
   }
   
   onChanges(){

@@ -8,8 +8,9 @@ export interface Goal {
     deadline ?:Date,
     weightage ?: number,
     comments ?: string,
+    tempComment ?: string,
     status ?: string,
     personal ?: number
     employeeId?:string,
-    performanceReviews?:Review[]
+    performanceReviews?:Review
 }

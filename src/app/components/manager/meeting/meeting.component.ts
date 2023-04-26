@@ -12,10 +12,6 @@ export class MeetingManagerComponent {
   @Input() meetings:MeetingMan[]=[]
   displayColumns = ['id', 'day', 'subject', 'startTime','endTime', 'description']
   constructor(private managerServivice:ManagerServiceService) {
-    // managerServivice.getMeetings().subscribe(data => {
-    //   this.meetings = data;
-    //   console.log("MEETINGS", data)
-    // })
   }
 
   convertTime(time:string) {

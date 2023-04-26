@@ -13,10 +13,10 @@ export class LeaveRequestsComponent {
   
 
   displayedColumns: string[] = ['Start Date', 'End Date', 'Type', 'Status', 'Notes'];
-  constructor(private leaveService:LeaveService, private loginService:LoginService){}
+  constructor(private leaveService:LeaveService){}
 
   ngOnInit():void{
-    this.leaveService.viewLeaves(this.loginService.id).subscribe(json => this.leaves = json);
+    this.leaveService.viewLeaves().subscribe(json => this.leaves = json);
   }
   onChanges(){
     this.ngOnInit();

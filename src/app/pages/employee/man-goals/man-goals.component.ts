@@ -25,7 +25,7 @@ export class ManagerGoalsComponent {
   
   constructor(private goalService:GoalsService, private emp:LoginService, private reviewService:ReviewService){ }
   ngOnInit(){
-    this.goalService.getManagerGoals(this.emp.id).subscribe(json => this.goals = json);
+    this.goalService.getManagerGoals().subscribe(json => this.goals = json);
   }
   negotiate(comments:string, id:number){
     this.goalService.negotiateGoal(comments, id).subscribe(json => {console.log(json); this.ngOnInit();});

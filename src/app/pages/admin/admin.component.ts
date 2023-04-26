@@ -1,17 +1,31 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DialogData } from 'src/app/components/manager/manager.component';
 import { Employee } from 'src/app/models/Employee';
+import { Goal } from 'src/app/models/Goal';
+import { Leave } from 'src/app/models/Leave';
 import { AdminService } from 'src/app/services/admin.service';
 import { LoginService } from 'src/app/services/login.service';
+import {LeaveService} from 'src/app/services/leaves.service'
+import { GoalsService } from 'src/app/services/goals.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 
-
+interface showValues {
+  value:'leave'|'goal'|'register'
+}
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
+  animations: [
+    trigger('detailExpand', [
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
+      transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
+    ]),
+  ],
 })
 export class AdminComponent {
   email:string="";
@@ -22,22 +36,25 @@ export class AdminComponent {
   message:string="";
   isManager:string="";
   employees:Employee[] = []
+  show:showValues = {value:"register"}
+  leaves:Leave[] = []
+  goals:Goal[] = []
+  expandedElement: Goal;
+  employee: Employee = {};
 
-  isAdmin: boolean = false;
-  constructor(private loginService:LoginService, private adminService:AdminService,public dialog: MatDialog,
-    private route: Router){
+  
+  constructor(private loginService:LoginService, private adminService:AdminService,public dialog: MatDialog, 
+    private leaveService:LeaveService, private goalService:GoalsService, private cd:ChangeDetectorRef, private route:Router){
+      this.expandedElement = {}
       if(this.loginService.isAdmin !==1){
         this.route.navigate(['/login'])
       }
       if(this.loginService.adminId ==1)
         this.isAdmin = true;
-    } 
+    }
 
   regPassword:string="";
-  displayedColumns: string[] = ['ID', 'Name', 'Leave', 'Email', 'Availability'];
-
-
-
+  displayedColumns: string[] = ['ID', 'Name', 'Leave', 'Email', 'Availability', 'Leaves','Goals',];
   register() {
     this.loginService.register({
       email:this.email, 
@@ -57,6 +74,35 @@ export class AdminComponent {
   }
   patch(emp:Employee) {
     
+  }
+  showRegister() {
+    this.show.value = "register"
+  }
+  showLeave(emp:Employee) {
+    this.leaveService.viewLeaves(emp.id as unknown as number).subscribe((data) => {
+      console.log(data);
+      this.employee = emp
+      this.leaves = data;
+      this.show.value = "leave";
+    }, (error) => {
+      console.log(error)
+      this.employee = emp
+      this.leaves = [];
+      this.show.value = "leave";
+      
+    } )
+  }
+  toggleRow(element: Goal) {
+    this.expandedElement = element
+    this.cd.detectChanges();
+   }
+  showGoal(emp:Employee) {
+    this.adminService.getGoalsByEmployee(emp).subscribe(data => {
+      this.employee = emp
+      this.goals = data;
+      this.show.value = "goal"
+      console.log(data)
+    })
   }
   openDialog(emp:Employee) {
     const dialogRef = this.dialog.open(PatchEmployee, {

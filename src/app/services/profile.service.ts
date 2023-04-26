@@ -9,13 +9,13 @@ import { LoginService } from './login.service';
 })
 export class ProfileService {
 
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient, private emp:LoginService) { 
     this.header.append("accept", "text/json");
     this.header.append("Access-Control-Allow-Origin", "*")
   }
 header: HttpHeaders = new HttpHeaders();
-  retrieveInfo(id: number) : Observable<Employee>{
-    return this.http.get("http://localhost:9000/revWorkforce/employee/"+id, 
+  retrieveInfo() : Observable<Employee>{
+    return this.http.get("http://localhost:9000/revWorkforce/employee/"+this.emp.id, 
         {headers: this.header})
   }
   updateInfo(employee:Employee) : Observable<Employee> {
