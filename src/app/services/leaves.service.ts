@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Leave } from '../models/Leave';
 import { Holiday } from '../models/Holiday';
 import { LoginService } from './login.service';
+import { Employee } from '../models/Employee';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,12 @@ export class LeaveService {
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
     return this.http.get<Leave[]>("http://localhost:9000/leaves/"+this.emp.id, {headers:header})
+  }
+  viewLeavesById(employee:Employee) : Observable<Leave[]> {
+    const header = new HttpHeaders();
+    header.append("accept", "text/json");
+    header.append("Access-Control-Allow-Origin", "*")
+    return this.http.get<Leave[]>("http://localhost:9000/leaves/"+employee.id, {headers:header})
   }
   rejectLeave(id:number, feedback:string) : Observable<string> {
     const header = new HttpHeaders();

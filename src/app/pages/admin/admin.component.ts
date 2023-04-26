@@ -41,12 +41,13 @@ export class AdminComponent {
   goals:Goal[] = []
   expandedElement: Goal;
   employee: Employee = {};
+  isAdmin;
 
   
   constructor(private loginService:LoginService, private adminService:AdminService,public dialog: MatDialog, 
     private leaveService:LeaveService, private goalService:GoalsService, private cd:ChangeDetectorRef, private route:Router){
       this.expandedElement = {}
-      if(this.loginService.isAdmin !==1){
+      if(this.loginService.isAdmin !=1){
         this.route.navigate(['/login'])
       }
       if(this.loginService.adminId ==1)
@@ -79,7 +80,7 @@ export class AdminComponent {
     this.show.value = "register"
   }
   showLeave(emp:Employee) {
-    this.leaveService.viewLeaves(emp.id as unknown as number).subscribe((data) => {
+    this.leaveService.viewLeavesById(emp).subscribe((data) => {
       console.log(data);
       this.employee = emp
       this.leaves = data;

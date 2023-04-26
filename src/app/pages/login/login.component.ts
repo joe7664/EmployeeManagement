@@ -24,7 +24,7 @@ export class LoginComponent {
       this.loginService.login({"email":this.username, "password":this.password})
       .subscribe(
         data => {
-        console.log(data)
+        // console.log(data)
         this.loginService.id = data.id as unknown as number;
         this.loginService.isManager = data.isManager as unknown as number;
         localStorage.setItem("employeeID", data.id as unknown as string)
@@ -36,9 +36,9 @@ export class LoginComponent {
     } else if (this.type=="admin") {
       this.loginService.loginAdmin({"username": this.username, "password": this.password}).subscribe(
       data => { console.log(data)
-        this.loginService.id = data.adminId as unknown as number;
+        this.loginService.id = data.id as unknown as number;
         this.loginService.isAdmin = data.isAdmin as unknown as number;
-        localStorage.setItem("adminId", data.adminId as unknown as string)
+        localStorage.setItem("adminId", data.id as unknown as string)
         localStorage.setItem("isAdmin", data.isAdmin == 1 ? "1" : "0")
         this.router.navigate(['/admin']);
         console.log("admin loged in")
