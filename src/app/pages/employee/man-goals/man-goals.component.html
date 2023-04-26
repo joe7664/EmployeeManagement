@@ -38,7 +38,7 @@
 
 </table>
 
-<div *ngIf="review">
+<div *ngIf="review" style="display: flex; justify-content: center;">
     <form>
         <p>Deliverables:</p><input [(ngModel)]="employeeReview.deliverables" required class="inputBlock" name="deliverables" type="text"><br>
         <p>Achievements:</p><input [(ngModel)]="employeeReview.achievements" required class="inputBlock" name="achievements" type="text"/><br>

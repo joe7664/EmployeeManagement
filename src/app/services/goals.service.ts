@@ -47,6 +47,7 @@ export class GoalsService {
         comments, {responseType:"text"})
   }
   addGoal(goal : Goal, id:number) : Observable<string> {
+    goal.fellowEmpComments="";
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")

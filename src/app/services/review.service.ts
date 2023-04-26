@@ -23,7 +23,7 @@ export class ReviewService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Review[]>("http://localhost:9000/performance/reviews/"+this.emp.id,
+    return this.http.get<Review[]>("http://localhost:9000/performance/employee/"+this.emp.id,
         {headers: header})
   }
   updateReview(review:Review):Observable<string> {

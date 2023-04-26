@@ -9,6 +9,7 @@ export interface Goal {
     weightage ?: number,
     comments ?: string,
     tempComment ?: string,
+    fellowEmpComments?:string,
     status ?: string,
     personal ?: number
     employeeId?:string,
