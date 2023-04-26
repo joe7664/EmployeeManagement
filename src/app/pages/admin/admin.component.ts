@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { DialogData } from 'src/app/components/manager/manager.component';
 import { Employee } from 'src/app/models/Employee';
 import { Goal } from 'src/app/models/Goal';
@@ -43,8 +44,13 @@ export class AdminComponent {
 
   
   constructor(private loginService:LoginService, private adminService:AdminService,public dialog: MatDialog, 
-    private leaveService:LeaveService, private goalService:GoalsService, private cd:ChangeDetectorRef){
+    private leaveService:LeaveService, private goalService:GoalsService, private cd:ChangeDetectorRef, private route:Router){
       this.expandedElement = {}
+      if(this.loginService.isAdmin !==1){
+        this.route.navigate(['/login'])
+      }
+      if(this.loginService.adminId ==1)
+        this.isAdmin = true;
     }
 
   regPassword:string="";
@@ -124,6 +130,8 @@ export class AdminComponent {
 export class PatchEmployee {
   employee:Employee = {}
   
+  
+
   constructor(public dialogRef: MatDialogRef<PatchEmployee>, 
     @Inject(MAT_DIALOG_DATA) public data: DialogData, private adminService:AdminService) {
       this.employee = data.employee
