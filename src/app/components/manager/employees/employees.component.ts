@@ -25,8 +25,6 @@ export class EmployeesComponent {
         el.selected = false;
       }
       this.employees = data
-      
-      // console.log("EMPLOYEES", data)
     })
 
   }

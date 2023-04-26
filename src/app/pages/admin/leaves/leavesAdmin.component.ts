@@ -32,6 +32,10 @@ export class LeavesAdminComponent implements OnChanges{
     console.log(changes)
   }
   submit(element:Leave) {
+    element.leaveType = this.val;
+    this.adminService.updateLeave(element).subscribe(data => {
+      console.log(data);
+    })
 
   }
   deleteLeave(element:Leave) {
