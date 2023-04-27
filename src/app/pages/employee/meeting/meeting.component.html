@@ -2,11 +2,11 @@
 <div mat-dialog-content style="display: block; margin-left: auto; margin-right: auto; width: 20%;">
   <mat-form-field style="display: block;" class="example-full-width">
     <mat-label>Meeting Subject</mat-label>
-    <input matInput [(ngModel)]="meeting.subject" placeholder="Goal Title" value="Sushi">
+    <input matInput [(ngModel)]="meeting.subject" placeholder="Subject" value="Sushi">
   </mat-form-field>
   <mat-form-field style="display: block;" class="example-full-width">
     <mat-label>Description</mat-label>
-    <textarea matInput [(ngModel)]="meeting.description" placeholder="Ex. Pizza" value="Sushi"></textarea>
+    <textarea matInput [(ngModel)]="meeting.description" placeholder="Description..." value="Sushi"></textarea>
   </mat-form-field>
   <mat-form-field appearance="outline">
     <mat-label>Date</mat-label>
@@ -25,6 +25,7 @@
   <div style="display:flex; justify-content: space-around;">
     <button mat-raised-button (click)="submit()">Send</button>
   </div>
+  <p> {{response}} </p>
 
   <!-- <p style="margin:10px 0">{{errorMessage}}</p> -->
 </div>

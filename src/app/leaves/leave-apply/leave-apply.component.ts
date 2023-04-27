@@ -15,12 +15,13 @@ export class LeaveApplyComponent {
   end: Date = new Date();
   tomorrow:string='';
   available:string='';
+  response:string="";
   leave: Leave={
     startDate:this.date,
     endDate:undefined,
     leaveType:'',
     status:'Submitted',
-    notes:'n/a'
+    notes:""
   };
   employee: Employee = {
     leaveBalance:0,
@@ -49,7 +50,14 @@ export class LeaveApplyComponent {
     }
   }
   submit(){
+    if(this.leave.notes==""){
+      this.leave.notes="N/A";
+    }
     console.log(this.employee.leaveBalance);
-    this.leaveService.leaveRequest(this.leave).subscribe(json => console.log(json));
+    this.leaveService.leaveRequest(this.leave).subscribe(json => {this.response=JSON.stringify(json); console.log(json)});
+    this.leave.startDate=this.date;
+    this.leave.endDate=undefined;
+    this.leave.leaveType='';
+    this.leave.notes="";
   }
 }

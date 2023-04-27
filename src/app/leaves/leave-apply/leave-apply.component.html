@@ -1,5 +1,5 @@
  <form class="form">
-    <p>Leave Balance: {{employee.leaveBalance}}</p><br>
+    <!-- <p>Leave Balance: {{employee.leaveBalance}}</p><br> -->
     <input [(ngModel)]="leave.startDate" type="date" name="sDate" value="tomorrow" [min]='tomorrow' (ngModelChange)="onChange($event)" required>
     <input [(ngModel)]="leave.endDate" type="date" name="eDate" [min]='leave.startDate' [max]="available" required><br>
     <label for="types">Type of leave:</label>
@@ -11,6 +11,7 @@
         <option value="Parental">Parental</option>
         <option value="Personal">Personal</option>
     </select><br>
-    <input [(ngModel)]="leave.notes" name="notes"><br>
+    <input [(ngModel)]="leave.notes" name="notes" placeholder="Notes"><br>
     <button type="submit" [disabled]="!leave.startDate||!leave.endDate||!leave.leaveType" (click)="submit()">Submit Request</button>
 </form>
+<p style="display: flex; justify-content: center;"> {{response}} </p>

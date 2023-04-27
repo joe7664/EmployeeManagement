@@ -12,6 +12,7 @@ export class MeetingComponent {
   date:Date;
   startTime:string="12:00";
   endTime:string="13:00";
+  response:string="";
   meeting:MeetingMan={
     subject:"",
     startDate:"",
@@ -40,6 +41,6 @@ export class MeetingComponent {
     this.meeting.startTime = start.toISOString();
     this.meeting.endTime = end.toISOString();
     console.log(this.meeting)
-    this.meetingService.requestMeeting(this.meeting).subscribe(json => console.log(json));
+    this.meetingService.requestMeeting(this.meeting).subscribe(json => {this.response=JSON.stringify(json); console.log(json);});
   }
 }
