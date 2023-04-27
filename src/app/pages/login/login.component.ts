@@ -14,6 +14,7 @@ export class LoginComponent {
   type:string = "employee";
   username:string="";
   password:string="";
+  emailMessage  = "";
 
   constructor(private loginService:LoginService, private router:Router){}
   toggleType() {
@@ -53,8 +54,12 @@ export class LoginComponent {
   }
   resetPassword() {
     this.loginService.resetPassword(this.emailForgot).subscribe(data => {
-      console.log(data)
+      this.emailMessage = "Please check your email for new password";
+      
+    }, error => {
+      this.emailMessage = "User not found"
     });
+    
   }
 
 }
