@@ -54,14 +54,14 @@
       <h2 style="text-align: center; margin-bottom:0">Register New Employee</h2>
     <form>
       <input [(ngModel)]="email" required class="inputBlock" name="email" type="text" placeholder="email">
-      <input [(ngModel)]="regPassword" required class="inputBlock" name="password" type="password" placeholder="Password"/>
+      <!-- <input [(ngModel)]="regPassword" required class="inputBlock" name="password" type="password" placeholder="Password"/> -->
       <input [(ngModel)]="fName" class="inputBlock" name="fname" type="text" placeholder="First Name">
       <input [(ngModel)]="lName" class="inputBlock" name="lname" type="text" placeholder="Last name"/>
       <input [(ngModel)]="phone" class="inputBlock" name="phone" type="tel" placeholder="Phone Number">
       <input [(ngModel)]="managerId" class="inputBlock" name="manager ID" type="text" placeholder="Manager's ID">
       <input [(ngModel)]="isManager" class="inputBlock" name="Is Manager" type="text" placeholder="Is Manager? Y = 1; N = 0">
-      <div style="margin:auto">
-        <button (click)="register()" mat-raised-button class="submitButton" type="submit">Register</button>
+      <div style="text-align: center;">
+        <button  (click)="register()" mat-raised-button class="submitButton" type="submit">Register</button>
 
       </div>
     </form>
