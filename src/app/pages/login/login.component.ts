@@ -17,8 +17,8 @@ export class LoginComponent {
   emailMessage  = "";
 
   constructor(private loginService:LoginService, private router:Router){}
-  toggleType() {
-    this.type = this.type=="admin" ? "employee" : "admin";
+  toggleType(type:string) {
+    this.type = type
   }
   submit() {
     if (this.type=="employee") {

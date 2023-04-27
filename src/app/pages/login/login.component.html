@@ -2,8 +2,8 @@
 <div id="login">
   <h1 class="title">Login page</h1>
   <div class="typeToggle">
-    <button (click)="toggleType()" [ngStyle]="{'backgroundColor':type=='admin' ? 'red' : ''}">Admin</button>
-    <button (click)="toggleType()" [ngStyle]="{'backgroundColor':type=='employee' ? 'red' :''}">Employee</button>
+    <button (click)="toggleType('admin')" mat-raised-button [ngStyle]="{'backgroundColor':type=='admin' ? 'red' : ''}">Admin</button>
+    <button (click)="toggleType('employee')" mat-raised-button [ngStyle]="{'backgroundColor':type=='employee' ? 'red' :''}">Employee</button>
   </div>
   <form>
     <input [(ngModel)]="username" class="inputBlock" name="username" type="text" placeholder="Username">
