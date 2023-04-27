@@ -163,7 +163,7 @@ export class MeetingRequest {
     this.meeting.startTime = start.toISOString();
     this.meeting.endTime = end.toISOString();
     this.managerService.postMeeting(this.meeting).subscribe(data => {
-      console.log(data);
+      this.closeDialog()
     })
   }
   ngOnInit() {
