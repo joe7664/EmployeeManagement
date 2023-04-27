@@ -17,35 +17,35 @@ export class AdminService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Employee[]>("http://localhost:9000/revWorkforce/employees",
+    return this.http.get<Employee[]>("http://54.215.229.217:9000/revWorkforce/employees",
         {headers: header})
   }
   patchEmployee(employee:Employee) {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.patch("http://localhost:9000/revWorkforce/employee/" + employee.id,employee,
+    return this.http.patch("http://54.215.229.217:9000/revWorkforce/employee/" + employee.id,employee,
         {headers: header})
   }  
   getGoals() : Observable<Goal[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Goal[]>("http://localhost:9000/goals",
+    return this.http.get<Goal[]>("http://54.215.229.217:9000/goals",
         {headers: header})
   }
   getReviews() : Observable<Review[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Review[]>("http://localhost:9000/performance",
+    return this.http.get<Review[]>("http://54.215.229.217:9000/performance",
         {headers: header})
   }
   getLeaves() : Observable<Leave[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Leave[]>("http://localhost:9000/leaves",
+    return this.http.get<Leave[]>("http://54.215.229.217:9000/leaves",
         {headers: header})
 
   }
@@ -53,18 +53,18 @@ export class AdminService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Goal[]>("http://localhost:9000/goals/" +emp.id,{headers: header})
+    return this.http.get<Goal[]>("http://54.215.229.217:9000/goals/" +emp.id,{headers: header})
   }
   updateLeave(leave:Leave) : Observable<Leave>{
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.patch("http://localhost:9000/leaves/" + leave.id,  leave, {headers:header})
+    return this.http.patch("http://54.215.229.217:9000/leaves/" + leave.id,  leave, {headers:header})
   }
   deleteLeave(leave:Leave) {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.delete("http://localhost:9000/leaves/" + leave.id,  {headers:header})
+    return this.http.delete("http://54.215.229.217:9000/leaves/" + leave.id,  {headers:header})
   }
 }

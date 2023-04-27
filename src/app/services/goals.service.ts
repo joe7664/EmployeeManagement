@@ -15,35 +15,35 @@ export class GoalsService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Goal[]>("http://localhost:9000/goals/employee/"+this.emp.id+"/0",
+    return this.http.get<Goal[]>("http://54.215.229.217:9000/goals/employee/"+this.emp.id+"/0",
         {headers: header})
   }
   getManagerGoals() : Observable<Goal[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Goal[]>("http://localhost:9000/goals/employee/"+this.emp.id+"/1",
+    return this.http.get<Goal[]>("http://54.215.229.217:9000/goals/employee/"+this.emp.id+"/1",
         {headers: header})
   }
   getGoalsByManagerId(id:number) : Observable<Goal[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Goal[]>("http://localhost:9000/goals/manager/"+id,
+    return this.http.get<Goal[]>("http://54.215.229.217:9000/goals/manager/"+id,
         {headers: header})
   }
   acceptGoal(goalId:number){
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post("http://localhost:9000/goals/"+goalId+"/accept", 
+    return this.http.post("http://54.215.229.217:9000/goals/"+goalId+"/accept", 
         "", {responseType:"text"})
   }
   negotiateGoal(comments:String, goalId:number){
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.put("http://localhost:9000/goals/"+goalId+"/negotiate", 
+    return this.http.put("http://54.215.229.217:9000/goals/"+goalId+"/negotiate", 
         comments, {responseType:"text"})
   }
   addGoal(goal : Goal, id:number) : Observable<string> {
@@ -51,21 +51,21 @@ export class GoalsService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post("http://localhost:9000/goals/employees/"+id, 
+    return this.http.post("http://54.215.229.217:9000/goals/employees/"+id, 
         goal, {responseType:"text"})
   }
   completeGoal(id:number){
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post("http://localhost:9000/goals/"+id+"/complete", 
+    return this.http.post("http://54.215.229.217:9000/goals/"+id+"/complete", 
         "", {responseType:"text"})
   }
   addComment(goalId:number, comment:string) : Observable<String>{
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.patch("http://localhost:9000/goals/"+goalId+"/comment", 
+    return this.http.patch("http://54.215.229.217:9000/goals/"+goalId+"/comment", 
         comment, {responseType:"text"})
   }
 }
