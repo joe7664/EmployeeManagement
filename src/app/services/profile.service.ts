@@ -15,11 +15,11 @@ export class ProfileService {
   }
 header: HttpHeaders = new HttpHeaders();
   retrieveInfo() : Observable<Employee>{
-    return this.http.get("http://localhost:9000/revWorkforce/employee/"+this.emp.id, 
+    return this.http.get("http://54.215.229.217:9000/revWorkforce/employee/"+this.emp.id, 
         {headers: this.header})
   }
   updateInfo(employee:Employee) : Observable<Employee> {
-    return this.http.patch<Employee>("http://localhost:9000/revWorkforce/employee/"+employee.id, 
+    return this.http.patch<Employee>("http://54.215.229.217:9000/revWorkforce/employee/"+employee.id, 
     employee, {headers: this.header})
   }
 }

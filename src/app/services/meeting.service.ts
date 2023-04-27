@@ -18,6 +18,6 @@ export class MeetingService {
     meeting.startDate = meeting.startTime?.split("T")[0]
     meeting.startTime = meeting.startTime?.split("T")[1].split(".")[0]
     meeting.endTime = meeting.endTime?.split("T")[1].split(".")[0]
-    return this.http.post("http://localhost:9000/meetings/employee/"+this.emp.id, meeting, {responseType:"text"})
+    return this.http.post("http://54.215.229.217:9000/meetings/employee/"+this.emp.id, meeting, {responseType:"text"})
   }
 }
