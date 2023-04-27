@@ -27,20 +27,20 @@ export class LoginService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post<Employee>("http://localhost:9000/revWorkforce/login", 
+    return this.http.post<Employee>("http://54.215.229.217:9000/revWorkforce/login", 
     employee, {headers:header})
   }
   register(employee:Employee) : Observable<any> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post("http://localhost:9000/revWorkforce/register", employee,{responseType:"text"})
+    return this.http.post("http://54.215.229.217:9000/revWorkforce/register", employee,{responseType:"text"})
   }
   resetPassword(email:string) : Observable<any> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post("http://localhost:9000/revWorkforce/password-reset", {"email":email}, {responseType:"text"})
+    return this.http.post("http://54.215.229.217:9000/revWorkforce/password-reset", {"email":email}, {responseType:"text"})
 
   }
 
@@ -48,7 +48,7 @@ export class LoginService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post<Admin>("http://localhost:9000/admin/login", 
+    return this.http.post<Admin>("http://54.215.229.217:9000/admin/login", 
     admin, {headers:header})
   }
   

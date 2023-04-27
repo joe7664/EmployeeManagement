@@ -20,46 +20,46 @@ export class ManagerServiceService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Employee[]>("http://localhost:9000/revWorkforce/employee/manager/" + this.loginService.id , {headers:header})
+    return this.http.get<Employee[]>("http://54.215.229.217:9000/revWorkforce/employee/manager/" + this.loginService.id , {headers:header})
   }
   getLeaveRequests() : Observable<Leave[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Leave[]>("http://localhost:9000/leaves/manager/" + this.loginService.id , {headers:header})
+    return this.http.get<Leave[]>("http://54.215.229.217:9000/leaves/manager/" + this.loginService.id , {headers:header})
   }
   getEmployeeLeave(employeeID:number) : Observable<Leave[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Leave[]>("http://localhost:9000/leaves/"+employeeID, {headers:header})
+    return this.http.get<Leave[]>("http://54.215.229.217:9000/leaves/"+employeeID, {headers:header})
   }
   findAvailableEmployees(leave:Leave) : Observable<Employee[]>{
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post<Employee[]>("http://localhost:9000/leaves/employee-availability/manager/" + this.loginService.id,
+    return this.http.post<Employee[]>("http://54.215.229.217:9000/leaves/employee-availability/manager/" + this.loginService.id,
     leave, {headers:header})
   }
   getEmployeeGoals() {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Goal[]>("http://localhost:9000/goals/manager/" + this.loginService.id,
+    return this.http.get<Goal[]>("http://54.215.229.217:9000/goals/manager/" + this.loginService.id,
     {headers:header})
   }
   getPerformanceReviews() {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Review[]>("http://localhost:9000/performance/manager/" + this.loginService.id,
+    return this.http.get<Review[]>("http://54.215.229.217:9000/performance/manager/" + this.loginService.id,
     {headers:header})
   }
   getMeetings() : Observable<MeetingMan[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<MeetingMan[]>("http://localhost:9000/meetings/manager/" + this.loginService.id,
+    return this.http.get<MeetingMan[]>("http://54.215.229.217:9000/meetings/manager/" + this.loginService.id,
     {headers:header})
   }
   postMeeting(meeting:MeetingMan) :Observable<string>{
@@ -68,15 +68,15 @@ export class ManagerServiceService {
     meeting.endTime = meeting.endTime?.split("T")[1].split(".")[0]
     console.log(meeting)
 
-    return this.http.post("http://localhost:9000/meetings/employee/"+this.loginService.id, meeting, {responseType:"text"})
+    return this.http.post("http://54.215.229.217:9000/meetings/employee/"+this.loginService.id, meeting, {responseType:"text"})
   }
   getNotifications() : Observable<Notification[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Notification[]>("http://localhost:9000/notifications/manager/" + this.loginService.id, {headers:header})
+    return this.http.get<Notification[]>("http://54.215.229.217:9000/notifications/manager/" + this.loginService.id, {headers:header})
   }
   deleteNotification(id:number) : Observable<string> {
-    return this.http.delete("http://localhost:9000/notifications/"+id, {responseType:"text"})
+    return this.http.delete("http://54.215.229.217:9000/notifications/"+id, {responseType:"text"})
   }
 }

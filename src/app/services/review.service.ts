@@ -16,21 +16,21 @@ export class ReviewService {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.post("http://localhost:9000/performance/request/"+goalId,
+    return this.http.post("http://54.215.229.217:9000/performance/request/"+goalId,
         review, {responseType:"text"})
   }
   viewEmployeeReviews() : Observable<Review[]> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.get<Review[]>("http://localhost:9000/performance/employee/"+this.emp.id,
+    return this.http.get<Review[]>("http://54.215.229.217:9000/performance/employee/"+this.emp.id,
         {headers: header})
   }
   updateReview(review:Review):Observable<string> {
     const header = new HttpHeaders();
     header.append("accept", "text/json");
     header.append("Access-Control-Allow-Origin", "*")
-    return this.http.put("http://localhost:9000/performance/review/" + review.reviewNumber, 
+    return this.http.put("http://54.215.229.217:9000/performance/review/" + review.reviewNumber, 
     review, {responseType:"text"})
 
   }
